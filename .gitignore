@@ -1,2 +1,4 @@
 config.h
 blocks.h
+*.orig
+*.rej
