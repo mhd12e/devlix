@@ -40,7 +40,7 @@ All patches can be found in the [patch](patch/) directory.
 ### Steps
 1. Install these packages:
 ```bash
-sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar cardoc docx2txt odt2txt gnumeric exiftool zsh
+sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar cardoc docx2txt odt2txt gnumeric exiftool zsh vim
 ```
 ```bash
 git clone https://aur.archlinux.org/yay.git
