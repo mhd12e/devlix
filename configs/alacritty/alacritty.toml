@@ -1,0 +1,63 @@
+[window]
+padding.x = 10
+padding.y = 10
+opacity = 0.70
+decorations = "Buttonless"
+
+[font]
+normal.family = "JetBrainsMono Nerd Font"
+size = 13
+
+# BEGIN WAL
+[colors.primary]
+background = '#0E1010'
+foreground = '#b6c1c7'
+
+[colors.cursor]
+text   = '#0E1010' # Apply background color to color of text inside cursor
+cursor = '#b6c1c7' # Apply foreground color to color of cursor
+
+[colors.vi_mode_cursor]
+text    = '#0E1010' # Same as above
+cursor  = '#b6c1c7'
+
+[colors.search.matches]
+foreground = '#0E1010' # Same as above
+background = '#b6c1c7' # Apply bright/white color to bg color of matching search
+
+[colors.search.focused_match]
+foreground = 'CellBackground'
+background = 'CellForeground'
+
+[colors.line_indicator]
+foreground = 'None'
+background = 'None'
+
+[colors.footer_bar]
+foreground = '#7f878b'
+background = '#b6c1c7'
+
+[colors.selection]
+text       = 'CellBackground'
+background = 'CellForeground'
+
+[colors.normal]
+black   = '#0E1010'
+red     = '#435C69'
+green   = '#4E6976'
+yellow  = '#AD722A'
+blue    = '#5C7784'
+magenta = '#627D89'
+cyan    = '#6B8490'
+white   = '#b6c1c7'
+
+[colors.bright]
+black   = '#7f878b'
+red     = '#435C69'
+green   = '#4E6976'
+yellow  = '#AD722A'
+blue    = '#5C7784'
+magenta = '#627D89'
+cyan    = '#6B8490'
+white   = '#b6c1c7'
+# END WAL
