@@ -1,4 +1,4 @@
-# Devlix WM (Dwm Fork)
+# Devlix WM 1.0 (Dwm Fork)
 
 ## Table of contents :
 
@@ -36,13 +36,15 @@ All patches can be found in the [patch](patch/) directory.
 
 ## Installation
 
-**Warning: I will assume this is a clean arch linux installation**
+**Warning: I will assume this is a brand new minimal arch linux installation**
 ### Steps
+
+**If you are doing this on virtual box enable 3d acceleration**
 
 1. Install these packages
 
 ```bash
-sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh vim go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd
+sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh vim go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager
 ```
 
 ```bash
@@ -127,4 +129,24 @@ cp suckless/.zshrc ~/.zshrc
 cp suckless/.zprofile ~/.zprofile
 cp suckless/.xinitrc ~/.xinitrc
 cp suckless/.p10k.zsh ~/.p10k.zsh
+exit
 ```
+Now login
+
+#### You should be greeted with Devlix WM
+
+### To Do :
+- [ ] Make an installer script
+- [x] Fix freezing on virtual box
+- [ ] Add support for multilingual keyboards other than Arabic
+- [ ] Add it to the AUR
+- [ ] Making a vim config
+- [x] Audio key bind script
+- [x] Brightness key bind script
+- [ ] Adding a clipboard manager (clipmenu - integration with dmenu)
+- [ ] Adding a notification manager
+- [ ] Making a change background script
+
+- [ ] Organizing the project more
+
+- [ ] Finding a contributor :\
