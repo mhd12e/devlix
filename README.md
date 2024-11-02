@@ -1,4 +1,4 @@
-# Devlix WM 1.0 (Dwm Fork)
+# Devlix WM 1.0 (dwm Fork)
 
 ## Table of contents :
 
@@ -7,39 +7,49 @@
     * Key binds
     * Images
 * Installation
+    * Steps
+    * Wallpapers
 * To do
+* Credits
 
 ## Description
 
-This is a fork of `dwm 6.4` with a lot of changes in the configurations and a lot of patches applied.
+This is my setup with a lot of changes in dwm, dmenu, dwmblocks by torrinfail, the configurations and a lot of patches applied.
 
 ### Patches
 
-All patches can be found in the [patch](patch/) directory.
-
-#### List of patches applied
+#### List of patches applied (dwm)
 | File Name & Path | Readme |
 |-------------|--------|
-[dwm-6.2-urg-border.diff](patch/dwm-6.2-urg-border.diff)|[https://dwm.suckless.org/patches/urgentborder/](https://dwm.suckless.org/patches/urgentborder/)
-[dwm-alwayscenter-20200625-f04cac6.diff](patch/dwm-alwayscenter-20200625-f04cac6.diff)|[https://dwm.suckless.org/patches/alwayscenter/](https://dwm.suckless.org/patches/alwayscenter/)
-[dwm-attachbelow-6.2.diff](patch/dwm-attachbelow-6.2.diff)|[https://dwm.suckless.org/patches/attachbelow/](https://dwm.suckless.org/patches/attachbelow/)
-[dwm-autostart-20210120-cb3f58a.diff](patch/dwm-autostart-20210120-cb3f58a.diff)|[https://dwm.suckless.org/patches/autostart/](https://dwm.suckless.org/patches/autostart/)
-[dwm-cursorwarp-6.3.diff](patch/dwm-cursorwarp-6.3.diff)|[https://dwm.suckless.org/patches/cursorwarp/](https://dwm.suckless.org/patches/cursorwarp/)
-[dwm-fullgaps-6.4.diff](patch/dwm-fullgaps-6.4.diff)|[https://dwm.suckless.org/patches/fullgaps/](https://dwm.suckless.org/patches/fullgaps/)
-[dwm-movestack-20211115-a786211.diff](patch/dwm-movestack-20211115-a786211.diff)|[https://dwm.suckless.org/patches/movestack/](https://dwm.suckless.org/patches/movestack/)
-[dwm-pertag-20200914-61bb8b2.diff](patch/dwm-pertag-20200914-61bb8b2.diff)|[https://dwm.suckless.org/patches/pertag/](https://dwm.suckless.org/patches/pertag/)
+|[dwm-6.2-urg-border.diff](dwm/patch/dwm-6.2-urg-border.diff)|[https://dwm.suckless.org/patches/urgentborder/](https://dwm.suckless.org/patches/urgentborder/)|
+|[dwm-alwayscenter-20200625-f04cac6.diff](dwm/patch/dwm-alwayscenter-20200625-f04cac6.diff)|[https://dwm.suckless.org/patches/alwayscenter/](https://dwm.suckless.org/patches/alwayscenter/)|
+|[dwm-attachbelow-6.2.diff](dwm/patch/dwm-attachbelow-6.2.diff)|[https://dwm.suckless.org/patches/attachbelow/](https://dwm.suckless.org/patches/attachbelow/)|
+|[dwm-autostart-20210120-cb3f58a.diff](dwm/patch/dwm-autostart-20210120-cb3f58a.diff)|[https://dwm.suckless.org/patches/autostart/](https://dwm.suckless.org/patches/autostart/)|
+|[dwm-cursorwarp-6.3.diff](dwm/patch/dwm-cursorwarp-6.3.diff)|[https://dwm.suckless.org/patches/cursorwarp/](https://dwm.suckless.org/patches/cursorwarp/)|
+|[dwm-fullgaps-6.4.diff](dwm/patch/dwm-fullgaps-6.4.diff)|[https://dwm.suckless.org/patches/fullgaps/](https://dwm.suckless.org/patches/fullgaps/)|
+|[dwm-movestack-20211115-a786211.diff](dwm/patch/dwm-movestack-20211115-a786211.diff)|[https://dwm.suckless.org/patches/movestack/](https://dwm.suckless.org/patches/movestack/)|
+|[dwm-pertag-20200914-61bb8b2.diff](dwm/patch/dwm-pertag-20200914-61bb8b2.diff)|[https://dwm.suckless.org/patches/pertag/](https://dwm.suckless.org/patches/pertag/)|
+
+#### List of patches applied (dmenu)
+| File Name & Path | Readme |
+|-------------|--------|
+|[dmenu-alpha-20230110-5.2.diff](dmenu/patch/dmenu-alpha-20230110-5.2.diff)|[https://tools.suckless.org/dmenu/patches/center/](https://tools.suckless.org/dmenu/patches/center/)|
+|[dmenu-center-20240616-36c3d68.diff](dmenu/patch/dmenu-center-20240616-36c3d68.diff)|[https://tools.suckless.org/dmenu/patches/center/](https://tools.suckless.org/dmenu/patches/center/)|
+|[dmenu-numbers-20220512-28fb3e2.diff](dmenu/patch/dmenu-numbers-20220512-28fb3e2.diff)|[https://tools.suckless.org/dmenu/patches/numbers/](https://tools.suckless.org/dmenu/patches/numbers/)|
 
 ### Images
 | 1 | 2 |
 |---|---|
 |![devlix](screenshots/scrot1.png)|![devlix](screenshots/scrot2.png)|
 
+
 ## Installation
 
 **Warning: I will assume this is a brand new minimal arch linux installation**
-### Steps
 
 **If you are doing this on virtual box enable 3d acceleration**
+
+### Steps
 
 1. Install these packages
 
@@ -64,6 +74,8 @@ git clone https://github.com/Mohamed1242012/suckless.git
 ```
 cd suckless
 wal -i wallpapers/[img name]
+cd alacritty-color-export/
+./script.sh
 ```
 
 #### Available Wallpapers
@@ -129,13 +141,28 @@ cp suckless/.zshrc ~/.zshrc
 cp suckless/.zprofile ~/.zprofile
 cp suckless/.xinitrc ~/.xinitrc
 cp suckless/.p10k.zsh ~/.p10k.zsh
+```
+
+8. lf image support
+
+```bash
+cd suckless/lfimg
+sudo make clean install
+```
+
+9. Finally
+
+```bash
 exit
 ```
 Now login
 
-#### You should be greeted with Devlix WM
+#### And You should be greeted with Devlix WM
 
-### To Do :
+---
+
+### To Do
+
 - [ ] Make an installer script
 - [x] Fix freezing on virtual box
 - [ ] Add support for multilingual keyboards other than Arabic
@@ -146,7 +173,26 @@ Now login
 - [ ] Adding a clipboard manager (clipmenu - integration with dmenu)
 - [ ] Adding a notification manager
 - [ ] Making a change background script
-
 - [ ] Organizing the project more
-
 - [ ] Finding a contributor :\
+- [ ] Adding slstatus patch to dwm
+- [ ] Make a documentation
+- [ ] Make a wiki
+- [ ] Make a website
+- [ ] Add more photos and videos
+- [ ] Make a YouTube channel
+- [ ] Post on r/unix port
+- [ ] Making a more descriptive README.md
+
+---
+
+### Credits
+[LICENSE](LICENSE)
+
+This open source project wouldn't be possible without these people and there open source projects:
+- [https://github.com/egeesin/pywal2alacritty](https://github.com/egeesin/pywal2alacritty)
+- [https://git.suckless.org/dwm](https://git.suckless.org/dwm)
+- [https://git.suckless.org/dmenu](https://git.suckless.org/dmenu)
+- [https://github.com/dylanaraps/pywal](https://github.com/dylanaraps/pywal)
+- [https://github.com/torrinfail/dwmblocks](https://github.com/torrinfail/dwmblocks)
+- [https://github.com/thimc/lfimg](https://github.com/thimc/lfimg)
