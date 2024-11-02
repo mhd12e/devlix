@@ -32,17 +32,17 @@ All patches can be found in the [patch](patch/) directory.
 ### Images
 | 1 | 2 |
 |---|---|
-![devlix](screenshots/scrot1.png)|![devlix](screenshots/scrot2.png)
+|![devlix](screenshots/scrot1.png)|![devlix](screenshots/scrot2.png)|
 
 ## Installation
 
 **Warning: I will assume this is a clean arch linux installation**
 ### Steps
 
-1. Install these packages:
+1. Install these packages
 
 ```bash
-sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar cardoc docx2txt odt2txt gnumeric exiftool zsh vim go webkit2gtk libxft libxinerama libx11
+sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh vim go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd
 ```
 
 ```bash
@@ -51,49 +51,80 @@ cd yay
 makepkg -si
 yay -Syu epub-thumbnailer-git wkhtmltopdf-static 7-zip
 ```
-2. Change you default shell to zsh
 
-```bash
-chsh -s /usr/bin/zsh
-exit
-```
-Then login
-Press 1 then 2 then 1 then 0
-
-3. Now install oh my zsh with these commands
-
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-also install these plugins for it
-
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-```
-
-4. Install also this nerd font for customization
-
-```bash
-sudo pacman -Syu ttf-jetbrains-mono-nerd
-```
-
-5. Clone this repository in your home directory
+2. Git clone this repository
 
 ```bash
 git clone https://github.com/Mohamed1242012/suckless.git
 ```
 
-6. Copy these files
-
-```bash
-cp suckless/.p10k.zsh ~/.p10k.zsh
-cp suckless/.zshrc ~/.zshrc
-cp suckless/.zprofile ~/.zprofile
+3. Set the wallpaper by wal
+```
+cd suckless
+wal -i wallpapers/[img name]
 ```
 
-7. Install p10k
+#### Available Wallpapers
+| Name | IMG | Name | IMG |
+|------|-----|------|-----|
+| walll1.jpg | ![wall1.jpg](wallpapers/wall1.jpg) | wall2.png | ![wall2.png](wallpapers/wall2.png) |
+| walll3.png | ![wall3.png](wallpapers/wall3.png) | wall4.png | ![wall4.png](wallpapers/wall4.png) |
+| wall5.jpg | ![wall5.jpg](wallpapers/wall5.jpg) |
+
+4. Build
+
 ```bash
+cd dwm
+sudo make clean install
+cd ..
+cd dmenu
+sudo make clean install
+cd ..
+cd dwmblocks
+sudo make clean install
+cd ..
+```
+
+5. Put all configs into place
+
+```bash
+rm -rf ~/.config/wal
+cp -r configs/* ~/.config/
+```
+
+6. Set zsh as default shell
+
+```bash
+chsh -s /usr/bin/zsh
+exit
+```
+Now login
+Then press 1 then 2 then 1 then 0
+
+7. Install ohmyzsh
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+exit
+exit
+```
+Now login
+
+8. Install zsh plugins and powerlevel10k
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+```
+
+9. Putting more configs into place
+
+```bash
+cp suckless/.zshrc ~/.zshrc
+cp suckless/.zprofile ~/.zprofile
+cp suckless/.xinitrc ~/.xinitrc
+cp suckless/.p10k.zsh ~/.p10k.zsh
 ```
