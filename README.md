@@ -42,14 +42,14 @@ All patches can be found in the [patch](patch/) directory.
 1. Install these packages:
 
 ```bash
-sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar cardoc docx2txt odt2txt gnumeric exiftool zsh vim go
+sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar cardoc docx2txt odt2txt gnumeric exiftool zsh vim go webkit2gtk libxft libxinerama libx11
 ```
 
 ```bash
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-yay -Syu epub-thumbnailer-git wkhtmltopdf 7-zip
+yay -Syu epub-thumbnailer-git wkhtmltopdf-static 7-zip
 ```
 2. Change you default shell to zsh
 
@@ -79,8 +79,21 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 sudo pacman -Syu ttf-jetbrains-mono-nerd
 ```
 
-2. Clone this repository in your home directory
+5. Clone this repository in your home directory
 
 ```bash
 git clone https://github.com/Mohamed1242012/suckless.git
+```
+
+6. Copy these files
+
+```bash
+cp suckless/.p10k.zsh ~/.p10k.zsh
+cp suckless/.zshrc ~/.zshrc
+cp suckless/.zprofile ~/.zprofile
+```
+
+7. Install p10k
+```bash
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 ```
