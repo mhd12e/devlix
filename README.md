@@ -1,4 +1,4 @@
-# Devlix WM (dwm Fork)
+# Devlix WM (Dwm Fork)
 
 ## Table of contents :
 
@@ -38,17 +38,49 @@ All patches can be found in the [patch](patch/) directory.
 
 **Warning: I will assume this is a clean arch linux installation**
 ### Steps
+
 1. Install these packages:
+
 ```bash
-sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar cardoc docx2txt odt2txt gnumeric exiftool zsh vim
+sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar cardoc docx2txt odt2txt gnumeric exiftool zsh vim go
 ```
+
 ```bash
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 yay -Syu epub-thumbnailer-git wkhtmltopdf 7-zip
 ```
-2. Clone this repository in your home directory with this command:
+2. Change you default shell to zsh
+
+```bash
+chsh -s /usr/bin/zsh
+exit
+```
+Then login
+Press 1 then 2 then 1 then 0
+
+3. Now install oh my zsh with these commands
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+also install these plugins for it
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+```
+
+4. Install also this nerd font for customization
+
+```bash
+sudo pacman -Syu ttf-jetbrains-mono-nerd
+```
+
+2. Clone this repository in your home directory
+
 ```bash
 git clone https://github.com/Mohamed1242012/suckless.git
 ```
