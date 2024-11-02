@@ -1,4 +1,4 @@
-# Devlix WM 1.0 (dwm Fork)
+# Devlix WM 1.0 (`dwm` Fork)
 
 ## Table of contents :
 
@@ -14,11 +14,11 @@
 
 ## Description
 
-This is my setup with a lot of changes in dwm, dmenu, dwmblocks by torrinfail, the configurations and a lot of patches applied.
+This is my setup with a lot of changes in `dwm`, `dmenu`, `dwmblocks` by torrinfail, the configurations and a lot of patches applied.
 
 ### Patches
 
-#### List of patches applied (dwm)
+#### List of patches applied (`dwm`)
 | File Name & Path | Readme |
 |-------------|--------|
 |[dwm-6.2-urg-border.diff](dwm/patch/dwm-6.2-urg-border.diff)|[https://dwm.suckless.org/patches/urgentborder/](https://dwm.suckless.org/patches/urgentborder/)|
@@ -30,7 +30,7 @@ This is my setup with a lot of changes in dwm, dmenu, dwmblocks by torrinfail, t
 |[dwm-movestack-20211115-a786211.diff](dwm/patch/dwm-movestack-20211115-a786211.diff)|[https://dwm.suckless.org/patches/movestack/](https://dwm.suckless.org/patches/movestack/)|
 |[dwm-pertag-20200914-61bb8b2.diff](dwm/patch/dwm-pertag-20200914-61bb8b2.diff)|[https://dwm.suckless.org/patches/pertag/](https://dwm.suckless.org/patches/pertag/)|
 
-#### List of patches applied (dmenu)
+#### List of patches applied (`dmenu`)
 | File Name & Path | Readme |
 |-------------|--------|
 |[dmenu-alpha-20230110-5.2.diff](dmenu/patch/dmenu-alpha-20230110-5.2.diff)|[https://tools.suckless.org/dmenu/patches/center/](https://tools.suckless.org/dmenu/patches/center/)|
@@ -61,21 +61,23 @@ sudo pacman -Syu alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh 
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+cd ..
 yay -Syu epub-thumbnailer-git wkhtmltopdf-static 7-zip
 ```
 
-2. Git clone this repository
+2. `Git clone` this repository
 
 ```bash
 git clone https://github.com/Mohamed1242012/suckless.git
 ```
 
-3. Set the wallpaper by wal
+3. Set the wallpaper by `wal`
 ```
 cd suckless
 wal -i wallpapers/[img name]
 cd alacritty-color-export/
 ./script.sh
+cd ..
 ```
 
 #### Available Wallpapers
@@ -106,7 +108,7 @@ rm -rf ~/.config/wal
 cp -r configs/* ~/.config/
 ```
 
-6. Set zsh as default shell
+6. Set `zsh` as default shell
 
 ```bash
 chsh -s /usr/bin/zsh
@@ -115,7 +117,7 @@ exit
 Now login
 Then press 1 then 2 then 1 then 0
 
-7. Install ohmyzsh
+7. Install `ohmyzsh`
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -124,7 +126,7 @@ exit
 ```
 Now login
 
-8. Install zsh plugins and powerlevel10k
+8. Install `zsh` plugins and `powerlevel10k`
 
 ```bash
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -143,7 +145,7 @@ cp suckless/.xinitrc ~/.xinitrc
 cp suckless/.p10k.zsh ~/.p10k.zsh
 ```
 
-8. lf image support
+8. `lf` image support
 
 ```bash
 cd suckless/lfimg
@@ -164,25 +166,26 @@ Now login
 ### To Do
 
 - [ ] Make an installer script
+- [ ] Add key binds page
 - [x] Fix freezing on virtual box
 - [ ] Add support for multilingual keyboards other than Arabic
-- [ ] Add it to the AUR
-- [ ] Making a vim config
+- [ ] Add it to the `AUR`
+- [ ] Making a `vim` config
 - [x] Audio key bind script
 - [x] Brightness key bind script
-- [ ] Adding a clipboard manager (clipmenu - integration with dmenu)
+- [ ] Adding a clipboard manager (`clipmenu` - integration with `dmenu`)
 - [ ] Adding a notification manager
 - [ ] Making a change background script
 - [ ] Organizing the project more
 - [ ] Finding a contributor :\
-- [ ] Adding slstatus patch to dwm
+- [ ] Adding `slstatus` patch to `dwm`
 - [ ] Make a documentation
 - [ ] Make a wiki
 - [ ] Make a website
 - [ ] Add more photos and videos
 - [ ] Make a YouTube channel
 - [ ] Post on r/unix port
-- [ ] Making a more descriptive README.md
+- [ ] Making a more descriptive `README.md`
 
 ---
 
