@@ -135,12 +135,12 @@ yay -Syu epub-thumbnailer-git wkhtmltopdf-static 7-zip
 2. `Git clone` this repository
 
 ```bash
-git clone https://github.com/Mohamed1242012/suckless.git
+git clone https://github.com/Mohamed1242012/devlix.git
 ```
 
 3. Set the wallpaper by `wal`
 ```
-cd suckless
+cd devlix
 wal -i wallpapers/[img name]
 cd alacritty-color-export/
 ./script.sh
@@ -206,16 +206,16 @@ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerl
 9. Putting more configs into place
 
 ```bash
-cp suckless/.zshrc ~/.zshrc
-cp suckless/.zprofile ~/.zprofile
-cp suckless/.xinitrc ~/.xinitrc
-cp suckless/.p10k.zsh ~/.p10k.zsh
+cp devlix/.zshrc ~/.zshrc
+cp devlix/.zprofile ~/.zprofile
+cp devlix/.xinitrc ~/.xinitrc
+cp devlix/.p10k.zsh ~/.p10k.zsh
 ```
 
 8. `lf` image support
 
 ```bash
-cd suckless/lfimg
+cd devlix/lfimg
 sudo make clean install
 ```
 
