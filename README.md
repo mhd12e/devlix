@@ -1,6 +1,6 @@
 # Devlix WM 1.0 (`dwm` Fork)
 
-## Table of contents :
+## Table of contents
 
 * Description
     * Patches
