@@ -4,8 +4,8 @@
 
 * Description
     * Patches
-    * Key binds
     * Images
+    * Key binds
 * Installation
     * Steps
     * Wallpapers
@@ -41,6 +41,73 @@ This is my setup with a lot of changes in `dwm`, `dmenu`, `dwmblocks` by torrinf
 | 1 | 2 |
 |---|---|
 |![devlix](screenshots/scrot1.png)|![devlix](screenshots/scrot2.png)|
+
+### Key binds and shourtcuts
+
+#### Keyboard Shortcuts
+
+`MODKEY` is the `alt` key by default
+
+| Shortcut                       | Function                     | Description                                                      |
+|--------------------------------|------------------------------|------------------------------------------------------------------|
+| `MODKEY + s`                   | `spawn`                      | Take a screenshot and save to `/home/mohamed/Pictures/scrot/`.   |
+| `MODKEY + p`                   | `spawn`                      | Launch `dmenu_run` (program launcher).                           |
+| `MODKEY + Shift + Enter`       | `spawn`                      | Open terminal (`alacritty`).                                     |
+| `MODKEY + b`                   | `togglebar`                  | Toggle visibility of the top bar.                                |
+| `MODKEY + j`                   | `focusstack +1`              | Focus the next window in the stack.                              |
+| `MODKEY + k`                   | `focusstack -1`              | Focus the previous window in the stack.                          |
+| `MODKEY + i`                   | `incnmaster +1`              | Increase the number of windows in the master area.               |
+| `MODKEY + d`                   | `incnmaster -1`              | Decrease the number of windows in the master area.               |
+| `MODKEY + h`                   | `setmfact -0.05`             | Decrease the size of the master window area.                     |
+| `MODKEY + l`                   | `setmfact +0.05`             | Increase the size of the master window area.                     |
+| `MODKEY + Shift + j`           | `movestack +1`               | Move the focused window down in the stack.                       |
+| `MODKEY + Shift + k`           | `movestack -1`               | Move the focused window up in the stack.                         |
+| `MODKEY + Enter`               | `zoom`                       | Promote the focused window to the master area.                   |
+| `MODKEY + Tab`                 | `view`                       | Toggle to the previously selected tag.                           |
+| `MODKEY + Shift + c`           | `killclient`                 | Close the focused window.                                        |
+| `MODKEY + t`                   | `setlayout tile`             | Set the window layout to tiling mode.                            |
+| `MODKEY + f`                   | `setlayout NULL`             | Set the window layout to floating mode.                          |
+| `MODKEY + m`                   | `setlayout monocle`          | Set the window layout to monocle (single fullscreen) mode.       |
+| `MODKEY + space`               | `setlayout`                  | Toggle between layouts.                                          |
+| `MODKEY + Shift + space`       | `togglefloating`             | Toggle floating mode for the focused window.                     |
+| `MODKEY + 0`                   | `view all tags`              | Show windows from all tags.                                      |
+| `MODKEY + Shift + 0`           | `tag all tags`               | Tag focused window with all tags.                                |
+| `MODKEY + ,`                   | `focusmon -1`                | Focus the previous monitor.                                      |
+| `MODKEY + .`                   | `focusmon +1`                | Focus the next monitor.                                          |
+| `MODKEY + Shift + ,`           | `tagmon -1`                  | Move the focused window to the previous monitor.                 |
+| `MODKEY + Shift + .`           | `tagmon +1`                  | Move the focused window to the next monitor.                     |
+| `MODKEY + -`                   | `setgaps -1`                 | Decrease the gaps between windows.                               |
+| `MODKEY + =`                   | `setgaps +1`                 | Increase the gaps between windows.                               |
+| `MODKEY + Shift + =`           | `setgaps 0`                  | Set the gaps between windows to zero.                            |
+| `MODKEY + Shift + q`           | `quit`                       | Exit `dwm`.                                                      |
+| `XF86AudioMute`                | `spawn mutecmd`              | Toggle mute for the system volume.                               |
+| `XF86AudioLowerVolume`         | `spawn voldowncmd`           | Decrease the system volume.                                      |
+| `XF86AudioRaiseVolume`         | `spawn volupcmd`             | Increase the system volume.                                      |
+| `Mod4 + space`                 | `spawn keylayout`            | Toggle the keyboard layout.                                      |
+| `XF86MonBrightnessUp`          | `spawn brightness_up`        | Increase screen brightness.                                      |
+| `XF86MonBrightnessDown`        | `spawn brightness_down`      | Decrease screen brightness.                                      |
+| `XF86PowerOff`                 | `spawn power_menu`           | Open the power menu script.                                      |
+| `Pause`                        | `spawn power_menu`           | Open the power menu script.                                      |
+| `MODKEY + (1-9)`               | `view`                       | Switch to a specific tag (workspace) by number.                  |
+| `MODKEY + Control + (1-9)`     | `toggleview`                 | Toggle display of windows from a specific tag.                   |
+| `MODKEY + Shift + (1-9)`       | `tag`                        | Apply a tag to the focused window.                               |
+| `MODKEY + Control + Shift + (1-9)` | `toggletag`            | Toggle tagging of the focused window on a specific tag.          |
+
+#### Mouse Shortcuts
+
+| Click Target           | Modifier       | Button    | Function         | Description                                      |
+|------------------------|----------------|-----------|------------------|--------------------------------------------------|
+| Layout Symbol          | None           | Button1   | `setlayout`      | Set the layout.                                  |
+| Layout Symbol          | None           | Button3   | `setlayout monocle` | Set layout to monocle (fullscreen).             |
+| Window Title           | None           | Button2   | `zoom`           | Promote the focused window to the master area.   |
+| Status Text            | None           | Button2   | `spawn termcmd`  | Open terminal (`alacritty`).                     |
+| Client Window          | `MODKEY`       | Button1   | `movemouse`      | Move the window.                                 |
+| Client Window          | `MODKEY`       | Button2   | `togglefloating` | Toggle floating mode for the window.             |
+| Client Window          | `MODKEY`       | Button3   | `resizemouse`    | Resize the window.                               |
+| Tag Bar                | None           | Button1   | `view`           | Switch to the selected tag.                      |
+| Tag Bar                | None           | Button3   | `toggleview`     | Toggle the selected tag view.                    |
+| Tag Bar                | `MODKEY`       | Button1   | `tag`            | Tag the focused window with the selected tag.    |
+| Tag Bar                | `MODKEY`       | Button3   | `toggletag`      | Toggle tagging the focused window on a tag.      |
 
 
 ## Installation
@@ -186,6 +253,7 @@ Now login
 - [ ] Make a YouTube channel
 - [ ] Post on r/unix port
 - [ ] Making a more descriptive `README.md`
+- [ ] Configuring `scrot` for screenshots
 
 ---
 
