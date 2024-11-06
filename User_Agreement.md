@@ -55,7 +55,7 @@ The name "Devli Development" and the associated logo are trademarks of Devli Dev
 
 ## Privacy Policy
 
-Devli Development is committed to respecting your privacy. We do not collect, store, or share personal data when you use the Software, except as required for the operation of the Software and as allowed by law. Any data we do collect is handled in accordance with applicable privacy laws. For more information, please review our [Privacy Policy](https://okhotsk.k4rt1.xyz/privacy-policy).
+Devli Development is committed to respecting your privacy. We do not collect, store, or share personal data when you use the Software, except as required for the operation of the Software and as allowed by law. Any data we do collect is handled in accordance with applicable privacy laws. For more information, please review our [Privacy Policy](https://okhotsk.k4rt1.xyz/devlix/privacy-policy).
 
 ---
 
@@ -63,8 +63,8 @@ Devli Development is committed to respecting your privacy. We do not collect, st
 
 For any questions, concerns, or inquiries about the Software or this Agreement, please visit our website:
 
-- [Devli Wiki](https://okhotsk.k4rt1.xyz/devlix-wiki)
-- [Devli Project](https://okhotsk.k4rt1.xyz/devlix)
+- [Devlix Wiki](https://okhotsk.k4rt1.xyz/devlix-wiki)
+- [Devlix Project](https://okhotsk.k4rt1.xyz/devlix)
 
 ---
 
