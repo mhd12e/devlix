@@ -27,6 +27,7 @@ done
 wal -i "$wall_path"
 
 cp -r ~/devlix/configs/* ~/.config
+touch ~/.zshrc
 
 (cd ~/devlix/dwm && sudo make clean install)
 (cd ~/devlix/dmenu && sudo make clean install)
@@ -37,7 +38,7 @@ chsh -s /usr/bin/zsh
 
 # zsh -i -c ''
 
-zsh -i -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && exit)" && exit'
+zsh -i -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit'
 
 zsh -i -c 'git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions'
 zsh -i -c 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
