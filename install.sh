@@ -26,16 +26,16 @@ while [ -z "$wall_path" ]; do
 done
 wal -i "$wall_path"
 
-(cd ~/devlix/dwm && sudo make clean install)
-(cd ~/devlix/dmenu && sudo make clean install)
-(cd ~/devlix/dwmblocks && sudo make clean install)
-(cd ~/devlix/lfimg && make install)
-
 cp ~/devlix/.zshrc ~/.zshrc
 cp ~/devlix/.zprofile ~/.zprofile
 cp ~/devlix/.xinitrc ~/.xinitrc
 cp ~/devlix/.p10k.zsh ~/.p10k.zsh
 cp -r ~/devlix/configs/* ~/.config
+
+(cd ~/devlix/dwm && sudo make clean install)
+(cd ~/devlix/dmenu && sudo make clean install)
+(cd ~/devlix/dwmblocks && sudo make clean install)
+(cd ~/devlix/lfimg && make install)
 
 chsh -s /usr/bin/zsh
 
