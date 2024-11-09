@@ -26,10 +26,6 @@ while [ -z "$wall_path" ]; do
 done
 wal -i "$wall_path"
 
-cp ~/devlix/.zshrc ~/.zshrc
-cp ~/devlix/.zprofile ~/.zprofile
-cp ~/devlix/.xinitrc ~/.xinitrc
-cp ~/devlix/.p10k.zsh ~/.p10k.zsh
 cp -r ~/devlix/configs/* ~/.config
 
 (cd ~/devlix/dwm && sudo make clean install)
@@ -41,10 +37,14 @@ chsh -s /usr/bin/zsh
 
 # zsh -i -c ''
 
-zsh -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit'
+zsh -i -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && exit)" && exit'
 
 zsh -i -c 'git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions'
 zsh -i -c 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
 zsh -i -c 'git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k'
 
-exit
+cp ~/devlix/.zshrc ~/.zshrc
+cp ~/devlix/.zprofile ~/.zprofile
+cp ~/devlix/.xinitrc ~/.xinitrc
+cp ~/devlix/.p10k.zsh ~/.p10k.zsh
+
