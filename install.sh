@@ -56,3 +56,4 @@ cp ~/devlix/.zprofile ~/.zprofile
 cp ~/devlix/.xinitrc ~/.xinitrc
 cp ~/devlix/.p10k.zsh ~/.p10k.zsh
 
+exit
