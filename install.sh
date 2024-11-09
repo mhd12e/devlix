@@ -44,6 +44,13 @@ zsh -i -c 'git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_C
 zsh -i -c 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
 zsh -i -c 'git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k'
 
+
+zsh -i -c '
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k'
+
+
 cp ~/devlix/.zshrc ~/.zshrc
 cp ~/devlix/.zprofile ~/.zprofile
 cp ~/devlix/.xinitrc ~/.xinitrc
