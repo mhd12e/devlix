@@ -45,15 +45,17 @@ zsh -i -c 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $Z
 zsh -i -c 'git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k'
 
 
-zsh -i -c '
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k'
+ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
 
 cp ~/devlix/.zshrc ~/.zshrc
 cp ~/devlix/.zprofile ~/.zprofile
 cp ~/devlix/.xinitrc ~/.xinitrc
 cp ~/devlix/.p10k.zsh ~/.p10k.zsh
+
+echo 'Finished !'
 
 exit
