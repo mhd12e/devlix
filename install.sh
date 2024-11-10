@@ -10,7 +10,7 @@ sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg
 
 sudo rm -rf ~/yay
 git clone https://aur.archlinux.org/yay.git ~/yay
-(cd ~/yay && makepkg -si)
+(cd ~/yay && makepkg -sif --noconfirm)
 sudo rm -rf ~/yay
 
 yay -Syu --noconfirm epub-thumbnailer-git wkhtmltopdf-static 7-zip
@@ -19,9 +19,9 @@ rm -rf ~/.cache/wal
 rm -rf ~/.config/wal
 
 while [ -z "$wall_path" ]; do
-    read -p "Enter the path of the wallpaper you want to set: " wall_path
+    read -p "\nEnter the path of the wallpaper you want to set:\n " wall_path
     if [ -z "$wall_path" ]; then
-        echo "You must provide a valid path. Please try again."
+        echo "You must provide a valid path. Please try again.\n"
     fi
 done
 wal -i "$wall_path"
