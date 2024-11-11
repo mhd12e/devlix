@@ -37,17 +37,23 @@ read -p "Start Devlix Installation (Y/n): " confirm
 confirm="${confirm:-y}"  # Set default to 'y' if the user presses Enter without input
 
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    echo -e "\n\n---------------------------------------------"
     echo "Starting Devlix Installation..."
+    echo -e "---------------------------------------------\n\n"
+    sleep 2
     # Add installation commands here
 else
+    echo ""
     echo "Installation canceled."
     exit 0
 fi
 
 
 # Clean package manager cache for pacman and yay
-
+echo -e "\n\n---------------------------------------------"
 echo "Cleaning package manager cache for pacman and yay (if installed) ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 sudo pacman -Scc --noconfirm
 sudo pacman -Syy --noconfirm
@@ -58,50 +64,82 @@ if command -v yay &> /dev/null; then
     yay -Syy --noconfirm
 else
     # yay is not installed, skip yay commands and continue with the rest of the script
+    echo -e "\n\n---------------------------------------------"
     echo "yay is not installed, skipping yay commands."
+    echo -e "---------------------------------------------\n\n"
+    sleep 2
 fi
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Update system and install a set of packages
 
+echo -e "\n\n---------------------------------------------"
 echo "Updating system and installing packages ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh vim go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager curl wget flameshot bluez-obex bluez bluez-utils blueman pulsemixer neovim
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Remove and rebuild yay from AUR
 
+echo -e "\n\n---------------------------------------------"
 echo "Installing yay for the AUR ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 sudo rm -rf ~/yay
 git clone https://aur.archlinux.org/yay.git ~/yay || { echo "Error: Failed to clone yay repository."; exit 1; }
 (cd ~/yay && makepkg -sif --noconfirm)
 sudo rm -rf ~/yay
-
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Install additional packages via yay
 
+echo -e "\n\n---------------------------------------------"
 echo "Installing additional packages via yay ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 yay -Syu --noconfirm epub-thumbnailer-git wkhtmltopdf-static 7-zip
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Remove wal cache and configuration files
 
+echo -e "\n\n---------------------------------------------"
 echo "Removing old wal colors ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 rm -rf ~/.cache/wal
 rm -rf ~/.config/wal
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 #----------------------------------------------------
 
+echo -e "\n\n---------------------------------------------"
 echo "Setting the wallpaper and color scheme ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Valid image extensions supported by pywal
 valid_extensions=("jpg" "jpeg" "png" "bmp" "gif" "tiff")
@@ -149,64 +187,100 @@ while true; do
     
     # If all checks pass, break the loop and apply the wallpaper
     wal -i "$wall_path_expanded"
-    feh --bg-fill "$wall_path_expanded"
     break
 done
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 #----------------------------------------------------
 
 # Copy Devlix configuration files to the appropriate directories
 
+echo -e "\n\n---------------------------------------------"
 echo "Copy Devlix configuration files ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 cp -r ~/devlix/configs/* ~/.config
 touch ~/.zshrc
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Build and install Devlix packages (dwm, dmenu, dwmblocks, lfimg)
 
+echo -e "\n\n---------------------------------------------"
 echo "Building Devlix WM ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
+
+sed -i "s/mohamed/$(whoami)/g" ~/devlix/dwm/config.def.h ~/devlix/dwm/config.h 2>/dev/null
 
 (cd ~/devlix/dwm && sudo make clean install)
 (cd ~/devlix/dmenu && sudo make clean install)
 (cd ~/devlix/dwmblocks && sudo make clean install)
 (cd ~/devlix/lfimg && make install)
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Change the default shell to zsh
 
+echo -e "\n\n---------------------------------------------"
 echo "Changing the default shell to zsh ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 chsh -s /usr/bin/zsh
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Install Oh My Zsh automatically
 
+echo -e "\n\n---------------------------------------------"
 echo "Installing Oh My Zsh ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Set up zsh plugins and themes
 
+echo -e "\n\n---------------------------------------------"
 echo "Setting up zsh plugins and themes ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions || { echo "Error: Failed to clone zsh-autosuggestions repository."; exit 1; }
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting || { echo "Error: Failed to clone zsh-syntax-highlighting repository."; exit 1; }
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k || { echo "Error: Failed to clone powerlevel10k repository."; exit 1; }
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 # Copy Devlix zsh and X configuration files
-
+echo -e "\n\n---------------------------------------------"
 echo "Copying configuration files ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 cp ~/devlix/.zshrc ~/.zshrc
 echo ".zshrc Done"
@@ -217,11 +291,15 @@ echo ".xinitrc Done"
 cp ~/devlix/.p10k.zsh ~/.p10k.zsh
 echo ".p10k.zsh Done"
 
+echo -e "\n\n---------------------------------------------"
 echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 #----------------------------------------------------
 
 cat ~/devlix/art/finish.txt
+sleep 2
 
 #----------------------------------------------------
 
@@ -235,6 +313,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     pkill -KILL -u $USER
 else
     echo "Logout and login back to see changes"
+    sleep 1
     echo "Background processes not killed. Exiting script."
     exit 0
 fi
