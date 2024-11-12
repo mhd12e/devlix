@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Protection against running as root or with sudo
 if [ "$(id -u)" -eq 0 ]; then
     echo "This script should not be run as root."
