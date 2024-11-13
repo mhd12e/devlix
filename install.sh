@@ -224,8 +224,8 @@ echo "Building Devlix WM ..."
 echo -e "---------------------------------------------\n\n"
 sleep 2
 
-sed -i "s/mohamed/$(whoami)/g" ~/devlix/dwm/config.def.h
-[ -f ~/devlix/dwm/config.h ] && sed -i "s/mohamed/$(whoami)/g" ~/devlix/dwm/config.h
+sed -i "s/mohamed/$(whoami)/g" ~/devlix/dwm/config.def.h ~/devlix/dmenu/config.def.h
+[ -f ~/devlix/dwm/config.h ] && sed -i "s/mohamed/$(whoami)/g" ~/devlix/dwm/config.h ~/devlix/dmenu/config.h
 
 (cd ~/devlix/dwm && sudo make clean install)
 (cd ~/devlix/dmenu && sudo make clean install)
