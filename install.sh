@@ -244,7 +244,10 @@ echo "Changing the default shell to zsh ..."
 echo -e "---------------------------------------------\n\n"
 sleep 2
 
-chsh -s /usr/bin/zsh
+while ! chsh -s /usr/bin/zsh; do
+    echo "Retrying..."
+    sleep 1
+done
 
 echo -e "\n\n---------------------------------------------"
 echo "Done."
