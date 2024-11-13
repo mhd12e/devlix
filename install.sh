@@ -189,6 +189,7 @@ while true; do
     
     # If all checks pass, break the loop and apply the wallpaper
     wal -i "$wall_path_expanded"
+    ~/devlix/alacritty-color-export/script.sh
     break
 done
 
