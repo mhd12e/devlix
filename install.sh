@@ -138,6 +138,24 @@ sleep 2
 
 #----------------------------------------------------
 
+# Copy Devlix configuration files to the appropriate directories
+
+echo -e "\n\n---------------------------------------------"
+echo "Copy Devlix configuration files ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
+
+cp -r ~/devlix/configs/* ~/.config
+touch ~/.zshrc
+
+echo -e "\n\n---------------------------------------------"
+echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
+
+
+#----------------------------------------------------
+
 echo -e "\n\n---------------------------------------------"
 echo "Setting the wallpaper and color scheme ..."
 echo -e "---------------------------------------------\n\n"
@@ -199,21 +217,6 @@ echo -e "---------------------------------------------\n\n"
 sleep 2
 
 #----------------------------------------------------
-
-# Copy Devlix configuration files to the appropriate directories
-
-echo -e "\n\n---------------------------------------------"
-echo "Copy Devlix configuration files ..."
-echo -e "---------------------------------------------\n\n"
-sleep 2
-
-cp -r ~/devlix/configs/* ~/.config
-touch ~/.zshrc
-
-echo -e "\n\n---------------------------------------------"
-echo "Done."
-echo -e "---------------------------------------------\n\n"
-sleep 2
 
 # Build and install Devlix packages (dwm, dmenu, dwmblocks, lfimg)
 
@@ -279,7 +282,7 @@ echo "Done."
 echo -e "---------------------------------------------\n\n"
 sleep 2
 
-# Copy Devlix zsh and X configuration files
+# Copy Devlix zsh and X Server configuration files
 echo -e "\n\n---------------------------------------------"
 echo "Copying configuration files ..."
 echo -e "---------------------------------------------\n\n"
