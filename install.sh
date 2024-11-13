@@ -225,6 +225,7 @@ echo -e "---------------------------------------------\n\n"
 sleep 2
 
 sed -i "s/mohamed/$(whoami)/g" ~/devlix/dwm/config.def.h
+sudo rm ~/devlix/dwm/config.h
 
 (cd ~/devlix/dwm && sudo make clean install)
 (cd ~/devlix/dmenu && sudo make clean install)
