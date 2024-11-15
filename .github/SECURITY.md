@@ -2,17 +2,6 @@
 
 We take the security of Devlix seriously and are committed to ensuring a secure experience for all users and contributors. This document outlines how to report vulnerabilities and the steps we take to address them.
 
-## Supported Versions
-
-The following versions of Devlix are actively supported with security updates:
-
-| Version      | Supported          |
-|--------------|--------------------|
-| 1.x (latest) | ✅                |
-| 0.x          | ❌                |
-
-If you are using an unsupported version, we recommend upgrading to the latest release.
-
 ## Reporting a Vulnerability
 
 If you discover a security vulnerability in Devlix, please follow the steps below:
