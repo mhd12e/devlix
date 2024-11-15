@@ -23,7 +23,7 @@ What actually happened?
 ---
 
 ### System Information
-- **Operating System**: [e.g., Arch Linux, Ubuntu, etc.]
+- **Linux Distribution**: [e.g., Arch Linux, Ubuntu, etc.]
 - **Kernel Version**: [e.g., 5.10.0-8-amd64]
 - **Window Manager**: [e.g., Devlix WM, dwm, etc.]
 - **CPU**: [e.g., Ryzen 7 5800HS]
