@@ -36,7 +36,7 @@ For more information about Devlix and its goals, visit [devlix.org](https://devl
 ## Contributions & Issues
 
 - **Report Issues**: [GitHub Issues](https://github.com/Mohamed1242012/devlix/issues)
-- **Contribute**: [Contributing Guide](https://github.com/Mohamed1242012/devlix/blob/main/CONTRIBUTING.md)
+- **Contribute**: [Contributing Guide](https://github.com/Mohamed1242012/devlix/blob/main/.github/CONTRIBUTING.md)
 
 For any additional questions or suggestions, refer to the community section on our [Wiki](https://wiki.devlix.org/?id=contributions).
 
