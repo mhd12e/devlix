@@ -1,7 +1,3 @@
-Here's the revised document following your requirements:
-
----
-
 <div align="center">
     <img src="logo.png" alt="Devlix Logo" style="width: 150px;">
     <h1>Devlix WM 1.0</h1>
@@ -42,7 +38,7 @@ For more information about Devlix and its goals, visit [devlix.org](https://devl
 - **Report Issues**: [GitHub Issues](https://github.com/Mohamed1242012/devlix/issues)
 - **Contribute**: [Contributing Guide](https://github.com/Mohamed1242012/devlix/blob/main/CONTRIBUTING.md)
 
-For any additional questions or suggestions, refer to the community section on our [Wiki](https://wiki.devlix.org/community).
+For any additional questions or suggestions, refer to the community section on our [Wiki](https://wiki.devlix.org/?id=contributions).
 
 ---
 
