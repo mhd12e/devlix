@@ -7,3 +7,7 @@ decorations = "Buttonless"
 [font]
 normal.family = "JetBrainsMono Nerd Font"
 size = 13
+
+# BEGIN WAL
+
+# END WAL
