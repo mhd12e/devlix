@@ -164,9 +164,32 @@ copy_zsh_x_config_files() {
 
 # Function to finish the installation process
 finish_installation() {
+    # Display the finishing message
     cat ~/devlix/art/finish.txt
+    
+    # Display warning before asking about logout
+    echo "Warning: Logging out will apply changes made during this installation."
+    echo "You will need to log in again to see the changes."
+    
+    # Ask the user if they want to log out
+    read -p "Do you want to log out to see changes? (Y/n): " choice
+
+    # Default to "Y" (Yes) if the user presses Enter without typing anything
+    if [[ -z "$choice" || "$choice" =~ ^[Yy]$ ]]; then
+        echo "Logging out..."
+        
+        # Get the current username and log the user out using pkill
+        username=$(whoami)
+        pkill -KILL -u "$username"
+    else
+        echo "You chose not to log out. Changes may not take effect until you log out manually."
+    fi
+
+    # Terminate sudo session (if applicable)
     terminate_sudo
 }
+
+
 
 # Main installation process
 main() {

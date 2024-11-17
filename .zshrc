@@ -122,3 +122,4 @@ export EDITOR="nvim"
 alias audio=pulsemixer
 alias wifi=nmtui
 alias bluetooth=bluetuith
+alias screen="arandr"
