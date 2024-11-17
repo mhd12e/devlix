@@ -20,12 +20,12 @@ static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unm
 static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
 static const char *scrot[] = { "scrot","/home/mohamed/Pictures/scrot/%Y-%m-%d-%T-screenshot.png" , NULL} ;
 
-static const char *brightness_up[]  =   { "python3", "/home/mohamed/suckless/scripts/brightness.py" , "up", NULL };
-static const char *brightness_down[]  = { "python3", "/home/mohamed/suckless/scripts/brightness.py" , "down", NULL };
+static const char *brightness_up[]  =   { "python3", "/home/mohamed/devlix/scripts/brightness.py" , "up", NULL };
+static const char *brightness_down[]  = { "python3", "/home/mohamed/devlix/scripts/brightness.py" , "down", NULL };
 
-static const char *keylayout[] = {"/home/mohamed/suckless/scripts/k_l.sh",NULL};
+static const char *keylayout[] = {"/home/mohamed/devlix/scripts/k_l.sh",NULL};
 
-static const char *power_menu[] = {"/home/mohamed/suckless/scripts/power_menu.sh",NULL};
+static const char *power_menu[] = {"/home/mohamed/devlix/scripts/power_menu.sh",NULL};
 
 #include <X11/XF86keysym.h>
 
