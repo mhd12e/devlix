@@ -1,0 +1,4 @@
+- Getting Started
+  - [What is Devlix](/?id=what-is-devlix)
+  - [Installation](install_guid/installation.md#installation)
+- 
