@@ -55,7 +55,7 @@ see our [wallpapers in github](https://github.com/Mohamed1242012/devlix/tree/mai
 ### Install the needed packages and programs for building `dwm`, `dmenu`, `dwmblocks` and install the apps you need
 
 ```bash
-sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager curl flameshot bluez-obex bluez bluez-utils blueman pulsemixer
+sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager curl flameshot bluez-obex bluez bluez-utils blueman pavucontrol arandr
 ```
 
 List of packages needed and there uses:
@@ -106,7 +106,8 @@ List of packages needed and there uses:
 - `bluez`: For bluetooth support
 - `bluez-utils`: For bluetooth support
 - `blueman`: For bluetooth support
-- `pulsemixer`: A tui tool for controlling sound
+- `pavucontrol`: A gui tool for controlling sound
+- `arandr`: A simple tool for configuring displays
 
 
 ### Install `yay` (AUR helper)
@@ -179,12 +180,12 @@ We have added some good looking wallpapers in our repository in this directory `
 
 ```bash
 rm -rf ~/.cache/wal
-wal -i [ img path ]
+wal -i <img path>
 ```
 
 ?> For more information about this tool (`pywal`) read their [wiki](https://github.com/dylanaraps/pywal/wiki)
 
-Replace `[ img path ]` with you real image path.
+Replace `<img path>` with you real image path.
 
 
 #### Example
@@ -332,3 +333,11 @@ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerl
 Now Logout and Login and you should be greeted with Devlix WM !
 
 ![screenshot](../screenshots/scrot2.png ':size=700')
+
+Here's how you can continue with the guide after the installation process:
+
+---
+
+## After Installation
+
+Congratulations! You've successfully installed Devlix WM on your system. Now that you have a minimal setup, we recommend that you read the next section of the documentation to get familiar with the features and keybinds of Devlix.

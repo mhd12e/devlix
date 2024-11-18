@@ -118,8 +118,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias lf=lfrun
-export EDITOR="nvim"
-alias audio=pulsemixer
+export EDITOR=vim
+alias audio=pavucontrol
 alias wifi=nmtui
 alias bluetooth=bluetuith
-alias screen="arandr"
+alias screen=arandr

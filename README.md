@@ -1,13 +1,14 @@
-<div align="center">
+<div style="text-align: center;">
     <img src="logo.png" alt="Devlix Logo" style="width: 150px;">
     <h1>Devlix WM 1.0</h1>
+    <nav style="text-align: center;">
+        <a href="https://wiki.devlix.org">Wiki</a> | 
+        <a href="https://devlix.org">Website</a> | 
+        <a href="https://github.com/Mohamed1242012/devlix/issues">Issues</a> | 
+        <a href="https://github.com/Mohamed1242012/devlix/blob/main/.github/CONTRIBUTING.md">Contributing</a>
+    </nav>
 </div>
-<nav align="center">
-    <a href="https://wiki.devlix.org">Wiki</a> | 
-    <a href="https://devlix.org">Website</a> | 
-    <a href="https://github.com/Mohamed1242012/devlix/issues">Issues</a> | 
-    <a href="https://github.com/Mohamed1242012/devlix/blob/main/.github/CONTRIBUTING.md">Contributing</a>
-</nav>
+
 
 ## Overview
 

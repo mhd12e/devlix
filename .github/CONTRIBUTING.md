@@ -9,6 +9,12 @@ Please take a moment to read through the following guidelines to ensure that you
 ### 1. Fork the repository
 Start by forking the repository to your GitHub account. This creates a personal copy where you can make changes without affecting the original project.
 
+Then clone it with this command
+
+```bash
+git clone <repo_url>
+```
+
 ### 2. Create a new branch
 Before making any changes, create a new branch based on the `main` branch. Name it descriptively, e.g., `fix-bug-description` or `add-feature-name`.
 
@@ -26,7 +32,9 @@ Once you've made your changes, make sure to compile and run Devlix WM to verify 
 - Check for any issues that might arise during compilation or runtime.
 
 ### 5. Update the Wiki (if needed)
-If your changes require an update to the documentation or the wiki, please make sure to contribute to the [Devlix Wiki](https://github.com/mohamed1242012/devlix-wiki) and update the relevant pages. This helps keep the documentation up-to-date with the latest changes to the project.
+If your changes require an update to the documentation or the wiki, please make sure to contribute to the Devlix Wiki in `devlix/docs` and update the relevant MarkDown files. This helps keep the documentation up-to-date with the latest changes to the project.
+
+To contribute to the wiki read the [docsify documentation](https://docsify.js.org/#/) to understand how our wiki website works, then edit `.md` files in `devlix/docs`.
 
 The Devlix Wiki can be accessed here: [wiki.devlix.org](https://wiki.devlix.org).
 
@@ -34,13 +42,14 @@ The Devlix Wiki can be accessed here: [wiki.devlix.org](https://wiki.devlix.org)
 After confirming that everything works, commit your changes with a clear, descriptive message. Please follow this commit message style:
 
 #### Commit Message Style:
-- **Use the present tense**: e.g., "Fix bug in layout" instead of "Fixed bug in layout."
+- **Use the present tense**: e.g., "Fix bug in layout" instead of "Fixed bug in layout".
 - **Be concise but descriptive**: Avoid vague descriptions, be specific about what your commit does.
+- **Use `Update Wiki: <Commit Message>`**: If you updated the wiki.
   
 Examples:
 - `improve performance in rendering loop`
 - `resolve crash when switching workspaces`
-- `update setup guide for new installation method`
+- `Update Wiki: Update setup guide for new installation method`
 
 ```bash
 git commit -m "add dynamic wallpaper switching functionality"
