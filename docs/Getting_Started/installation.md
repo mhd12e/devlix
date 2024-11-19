@@ -7,13 +7,17 @@ You can install Devlix using the script or the manual way.
 
 ## Prerequisites
 
-?> I will assume this is a new minimal Arch Linux installation and you user can use sudo
+?> I will assume this is a new minimal Arch Linux or Debian (with standard system utilities) installation and you user has root privileges
 
 !> If you want to run Devlix wm on a Virtual Machine ensure that 3d acceleration is turned on, without it the Virtual Machine will freeze every time you open it
 
 ## Install script
 
 These are the steps you need to follow to install Devlix wm with the installer script.
+
+!> This script currently supports Arch Linux only, for Debian please use the [Manual way](#manual-installation).
+
+?> Support for other Linux distributions is Coming Soon
 
 ### Install `git` for cloning my repository
 
@@ -52,10 +56,16 @@ see our [wallpapers in github](https://github.com/Mohamed1242012/devlix/tree/mai
 
 ## Manual Installation
 
+These are the steps for Manual Installation for both Arch Linux or Debian
+
+<!-- tabs:start -->
+
+## **Arch Linux**
+
 ### Install the needed packages and programs for building `dwm`, `dmenu`, `dwmblocks` and install the apps you need
 
 ```bash
-sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager curl flameshot bluez-obex bluez bluez-utils blueman pavucontrol arandr
+sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager curl flameshot bluez-obex bluez bluez-utils blueman pavucontrol arandr upower
 ```
 
 List of packages needed and there uses:
@@ -89,7 +99,6 @@ List of packages needed and there uses:
 - `odt2txt`: A requirement for `lfimg`
 - `gnumeric`: A requirement for `lfimg`
 - `zsh`: The shell we will use
-- `vim`: A code editor that only pros use
 - `go`: A programming language
 - `webkit2gtk`: `dwm` wont compile without it
 - `libxft`: `dwm` wont compile without it
@@ -108,6 +117,7 @@ List of packages needed and there uses:
 - `blueman`: For bluetooth support
 - `pavucontrol`: A gui tool for controlling sound
 - `arandr`: A simple tool for configuring displays
+- `upower`: To know the battery percentage
 
 
 ### Install `yay` (AUR helper)
@@ -276,7 +286,7 @@ Use this command to install `Oh My Zsh` and set it as the default shell.
 
 ```bash
 # Install Oh My Zsh using curl
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 ```
 
 ?> For more information read the official [Oh My Zsh documentation](https://github.com/ohmyzsh/ohmyzsh/wiki)
@@ -328,15 +338,336 @@ To install `Powerlevel10k` run this command
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 ```
 
+## **Debian**
+
+### Install the needed packages and programs for building `dwm`, `dmenu`, `dwmblocks` and install the apps you need
+
+```bash
+sudo apt update && sudo apt upgrade && sudo apt install -y xserver-xorg xinit x11-xserver-utils feh picom neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler-utils build-essential git bat chafa unzip p7zip-full unrar-free catdoc docx2txt odt2txt gnumeric golang libwebkit2gtk-4.0-37 libxft-dev libxinerama-dev libx11-dev alsa-utils scrot python3 network-manager curl flameshot bluez bluez-tools blueman pavucontrol arandr tar wkhtmltopdf gnome-epub-thumbnailer upower python3-pip zsh
+```
+
+List of packages needed and there uses:
+
+- `xserver-xorg`: For dwm to start with the `X Window System`
+- `xinit`: For the `.xinitrc` file
+- `x11-xserver-utils`: For tweaking monitors (brightness , resolution etc.)
+- `feh`: For the setting an image as a background
+- `picom`: A compositor that adds transparency and some effects in opening and closing windows
+
+?> `picom` also helps in reducing screen tearing
+
+- `neofetch`: For displaying your system information in a nice way
+- `lf`: A file manager that runs in the terminal
+- `ueberzug`: Adds image support to lf
+- `ffmpegthumbnailer`: A requirement for `lfimg`
+- `imagemagick`: A requirement for `lfimg`
+- `poppler-utils`: A requirement for `lfimg`
+- `build-essential`: For compiling the code
+- `git`: For git cloning
+- `bat`: like cat but with syntax highlighting and line numbers
+- `chafa`: A requirement for `lfimg`
+- `unzip`: For unzipping `.zip` files
+- `p7zip-full`: For `.7z` files
+- `unrar`: for `.rar` files
+- `catdoc`: A requirement for `lfimg`
+- `docx2txt`: A requirement for `lfimg`
+- `odt2txt`: A requirement for `lfimg`
+- `gnumeric`: A requirement for `lfimg`
+- `golang`: A programming language
+- `libwebkit2gtk-4.0-37`: `dwm` wont compile without it
+- `libxft-dev`: `dwm` wont compile without it
+- `libxinerama-dev`: `dwm` wont compile without it
+- `libx11-dev`: `dwm` wont compile without it
+- `alsa-utils`: For controlling sound level
+- `scrot`: For taking screenshots
+- `python3`: For running python scripts
+- `network-manager`: For connecting to the internet
+- `curl`: One of the ways to install `Oh My Zsh`
+- `flameshot`: Another tool for taking screenshots
+- `bluez`: For bluetooth support
+- `bluez-tools`: For bluetooth support
+- `blueman`: For bluetooth support
+- `pavucontrol`: A gui tool for controlling sound
+- `arandr`: A simple tool for configuring displays
+- `tar`: For installing the nerd font
+- `wkhtmltopdf`: A requirement for lfimg
+- `epub-thumbnailer`:  A requirement for lfimg
+- `upower`: To know the battery percentage
+- `zsh`: The shell we will use
+- `python3-pip`: For installing `pywal`
+
+### Compile and install Alacritty
+
+> Alacritty is a modern terminal emulator that comes with sensible defaults, but allows for extensive configuration. By integrating with other applications, rather than reimplementing their functionality, it manages to provide a flexible set of features with high performance. The supported platforms currently consist of BSD, Linux, macOS and Windows.
+>
+> \- [Alacritty official website](https://alacritty.org/)
+
+?> For more information about Alacritty read their [documentation](https://github.com/alacritty/alacritty/blob/master/docs/features.md)
+
+!> Dont install Alacritty from Debian Repositories because it's always an older version
+
+These are the steps to compile Alacritty in Debian
+
+#### Clone the Alacritty repository
+
+This will contain the source code and the files needed for compiling
+
+```bash
+git clone https://github.com/alacritty/alacritty.git ~/alacritty
+```
+
+#### Install `rustup` for installing `rust` the programming language
+
+> rustup installs The Rust Programming Language from the official release channels, enabling you to easily switch between stable, beta, and nightly compilers and keep them updated. It makes cross-compiling simpler with binary builds of the standard library for common platforms. And it runs on all platforms Rust supports.
+>
+> \- [The rustup Book](https://rust-lang.github.io/rustup/)
+
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source ~/.bashrc
+```
+
+#### Install the dependencies
+
+Alacritty wont build without these dependencies
+
+```bash
+sudo apt install -y cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+```
+
+#### Build and compile Alacritty
+
+```bash
+(cd ~/alacritty && cargo build --release)
+```
+
+#### Move the binary file to `/usr/local/bin/`
+
+We need to do this to make Alacritty start once we type `alacritty` in the shell.
+
+```bash
+sudo mv ~/alacritty/target/release/alacritty /usr/local/bin/
+```
+
+### Install `pywal`
+
+> `Pywal` is a tool that generates a color palette from the dominant colors in an image. It then applies the colors system-wide and on-the-fly in all of your favorite programs.
+>
+> [`Pywal README.md` on GitHub](https://github.com/dylanaraps/pywal?tab=readme-ov-file)
+
+These are the steps to install `pywal` in Debian
+
+```bash
+sudo pip3 install pywal --break-system-packages
+```
+
+### Install a nerd font
+
+> Nerd Fonts patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular ‘iconic fonts’ such as Font Awesome, Devicons, Octicons, and others.
+>
+> \- [Nerd Font Website](https://www.nerdfonts.com/)
+
+These are the commands to install a nerd font in Debian
+
+```bash
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
+cd ~/.local/share/fonts
+unzip JetBrainsMono.zip
+rm JetBrainsMono.zip
+fc-cache -fv
+```
+
+### Clone Devlix repository in your Home directory
+
+>What is Devlix
+>Devlix is a window manager based on `dwm 6.5`, designed to provide a lightweight, efficient, and customizable environment for users who prefer minimalism and simplicity in their computing experience. Built with performance in mind, Devlix focuses on delivering a streamlined user interface that enhances productivity while utilizing minimal system resources. Unlike `dwm`, which often requires extensive configuration and patching, Devlix is ready to use out of the box, allowing users to quickly set up and start working without the need for extensive customization.
+>
+> \- [What is Devlix - Devlix Wiki 📚](../README.md#what-is-devlix)
+
+```bash
+git clone https://github.com/Mohamed1242012/devlix.git ~/devlix
+```
+
+### Copy `.config` directory to your system
+
+Copy all files in `~/devlix/configs` to your `~/.config` file by using this command
+
+```bash
+mkdir ~/.config
+cp -r ~/devlix/configs/* ~/.config
+```
+
+### Set the terminal color scheme and the background image using `Pywal`
+
+We have added some good looking wallpapers in our repository in this directory `~/devlix/wallpapers/[img name]` but you can put also any other wallpaper in any directory.
+
+?> See [wallpapers included on GitHub](https://github.com/Mohamed1242012/devlix/tree/main/wallpapers)
+
+#### Use these commands to set the terminal color schemes
+
+```bash
+rm -rf ~/.cache/wal
+wal -i <img path>
+```
+
+?> For more information about this tool (`pywal`) read their [wiki](https://github.com/dylanaraps/pywal/wiki)
+
+Replace `<img path>` with you real image path.
+
+
+#### Example
+
+```bash
+rm -r ~/.cache/wal
+wal -i ~/devlix/wallpapers/wall2.png
+```
+
+
+### Export `pywal` colors to Alacritty
+
+> Alacritty is a modern terminal emulator that comes with sensible defaults, but allows for extensive configuration. By integrating with other applications, rather than reimplementing their functionality, it manages to provide a flexible set of features with high performance. The supported platforms currently consist of BSD, Linux, macOS and Windows.
+>
+> \- [Alacritty official website](https://alacritty.org/)
+
+?> For more information about Alacritty read their [documentation](https://github.com/alacritty/alacritty/blob/master/docs/features.md)
+
+To export `pywal` generated colors to alacritty use `pywal2alacritty`
+
+?> `pywal2alacritty` is an open source tool that exports the colors generated from `pywal` to Alacritty `.toml` file that has all the config, for more information about it read there [`README.md` file on GitHub](https://github.com/egeesin/pywal2alacritty?tab=readme-ov-file#pywal2alacritty)
+
+Use these commands to export the colors
+
+```bash
+cd ~/devlix/alacritty-color-export
+./script.sh
+```
+
+
+### Compile `dwm`, `dmenu`, `dwmblocks` and `lfimg`
+
+Compile the code for these apps using these commands one by one
+
+```bash
+# Add your username
+sed -i "s/mohamed/$(whoami)/g" ~/devlix/dwm/config.def.h ~/devlix/dmenu/config.def.h
+
+# Compile dwm - Dynamic Window Manager
+cd ~/devlix/dwm
+sudo make clean install
+
+# Compile dmenu
+cd ~/devlix/dmenu
+sudo make clean install
+
+# Compile dwmblocks
+cd ~/devlix/dwmblocks
+sudo make clean install
+
+# Compile lfimg
+cd ~/devlix/lfimg
+make install
+```
+
+### Put configuration files in there place
+
+Copy these configuration files in the desired directories using these commands
+
+```bash
+cp ~/devlix/.zshrc ~/.zshrc
+cp ~/devlix/.zprofile ~/.zprofile
+cp ~/devlix/.xinitrc ~/.xinitrc
+cp ~/devlix/.p10k.zsh ~/.p10k.zsh
+```
+
+#### References
+(Coming Soon)
+
+### Set zsh as the default shell
+
+> The Z shell (Zsh) is a Unix shell that can be used as an interactive login shell and as a command interpreter for shell scripting. Zsh is an extended Bourne shell with many improvements, including some features of Bash, ksh, and tcsh.
+> 
+> [Z shell - Wikipedia](https://en.wikipedia.org/wiki/Z_shell)
+
+```bash
+chsh -s /usr/bin/zsh
+```
+
+?>_Tip:_ `chsh` stands for Change Shell
+
+### Install `Oh My Zsh` and set it as the default shell
+
+> Oh My Zsh is a delightful, open source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...
+> 
+> \- [Oh My Zsh Official Website](https://ohmyz.sh)
+
+Use this command to install `Oh My Zsh` and set it as the default shell.
+
+```bash
+# Install Oh My Zsh using curl
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+```
+
+?> For more information read the official [Oh My Zsh documentation](https://github.com/ohmyzsh/ohmyzsh/wiki)
+
+### Install some useful `zsh` plugins
+
+These plugins add some functionality to zsh and make it more efficient and easier to use, an example of this are these plugins.
+
+- `zsh-autosuggestions`
+    - This gives auto suggestions for the past commands you wrote and increases speed so you don't type any command again and again
+    - For more information about `zsh-autosuggestions` read it's [`README.md` file on GitHub](https://github.com/zsh-users/zsh-autosuggestions)
+- `zsh-syntax-highlighting`
+    - This gives you syntax highlighting in the commands you type
+    - For more information about `zsh-syntax-highlighting` read it's [`README.md` file on GitHub](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+To install them enter these commands in your terminal
+
+!> You should enter `zsh` before installing these plugins for them to be installed in the right directory
+
+?> It's OK to see some errors when you enter zsh and they will be fixed once you install the [plugins](#install-some-useful-zsh-plugins) and the [`PowerLevel10k` theme](#install-powerlevel10k-theme-on-zsh)
+
+```bash
+# If you miss this command the plugins will not be installed in there right directory
+zsh
+
+# zsh-autosuggestions - https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+# zsh-syntax-highlighting - https://github.com/zsh-users/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+```
+
+<!-- zsh -i -c 'echo $ZSH_VERSION' -->
+
+
+### Install `Powerlevel10k` theme on `zsh`
+
+> Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.
+>
+> \- [Powerlevel10k README.md on GitHub](https://github.com/romkatv/powerlevel10k)
+
+`Powerlevel10k` lets you customize the terminal to do somethings like this
+
+![powerlevel10k](../pictures/powerlevel10k.png)
+
+To install `Powerlevel10k` run this command
+
+```bash
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+```
+
+<!-- tabs:end -->
+
 ### Congrats 🎉
 
 Now Logout and Login and you should be greeted with Devlix WM !
 
+```bash
+pkill -KILL -u $(whoami)
+```
+
 ![screenshot](../screenshots/scrot2.png ':size=700')
 
-Here's how you can continue with the guide after the installation process:
-
----
 
 ## After Installation
 
