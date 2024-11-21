@@ -9,6 +9,7 @@
     "spellright.documentTypes": [
         "latex",
         "plaintext",
-        "markdown"
+        "markdown",
+        "shellscript"
     ]
 }
