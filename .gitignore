@@ -2,9 +2,9 @@
 *.o
 
 # Ignore compiled binary executables
-dwm
-dmenu
-dwmblocks
+dwm/dwm
+dmenu/dmenu
+dwmblocks/dwmblocks
 
 # Ignore dependency build files
 *.d
