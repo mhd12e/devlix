@@ -1,4 +1,31 @@
+# Ignore object files
+*.o
+
+# Ignore compiled binary executables
+dwm
+dmenu
+dwmblocks
+
+# Ignore dependency build files
+*.d
+
+# Ignore editor backup files (e.g., vim, emacs)
+*~
+.*.swp
+*.swp
+
+# Ignore temporary files created by compilers
+*.out
+*.a
+*.so
+
+# Ignore system-specific files (for example, if using vim or emacs)
+*.log
+
+# Ignore the config files for personal customization
 config.h
 blocks.h
+
+# Ignore patches and merge conflict files
 *.orig
 *.rej
