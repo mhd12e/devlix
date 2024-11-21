@@ -28,7 +28,7 @@ keep_sudo_alive
 
 cd ~
 
-if whiptail --title "Start" --yesno "Welcome To Devlix WM\!\nDo you want to start the Devlix WM Installation?" 8 78; then
+if whiptail --title "Start" --yesno "Welcome To Devlix WM!\nDo you want to start the Devlix WM Installation?" 8 78; then
     :  # No operation, just continue
 else
     exit 0
@@ -149,7 +149,7 @@ walpaper=$(whiptail --title "Wallpaper" --radiolist \
 --nocancel \
 3>&1 1>&2 2>&3)
 
-wal -i "~/devlix/wallpapers/$walpaper"
+wal -i "/home/$(whoami)/devlix/wallpapers/$walpaper"
 ~/devlix/alacritty-color-export/script.sh
 
 #----------------------------------------------------
@@ -246,11 +246,12 @@ sleep 2
 
 terminate_sudo
 
-if whiptail --title "Finished \!" --yesno \
-"Thanks for installing Devlix WM\!\nFor more information about Devlix WM, please visit:\nhttps://devlix.org\nor if you want to read the Devlix documentation and guide, visit:\nhttps://wiki.devlix.org\n\nDo you want to kill all background processes and log out to see changes?" \
+if whiptail --title "Finished !" --yesno \
+"Thanks for installing Devlix WM!\nFor more information about Devlix WM, please visit:\nhttps://devlix.org\nor if you want to read the Devlix documentation and guide, visit:\nhttps://wiki.devlix.org\n\nDo you want to kill all background processes and log out to see changes?" \
 15 78
 then
     kill %1
     pkill -KILL -u $USER
 else
-    whiptail --title "Finished \!" --msgbox "Logout and login back to see changes" 8 78
+    whiptail --title "Finished !" --msgbox "Logout and login back to see changes" 8 78
+fi
