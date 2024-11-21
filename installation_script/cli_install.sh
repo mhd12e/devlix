@@ -2,10 +2,15 @@
 
 clear
 
+exito() {
+    pkill tee
+    exit $1
+}
+
 # Protection against running as root or with sudo
 if [ "$(id -u)" -eq 0 ]; then
-    whiptail --title "This script should not be run as root" --msgbox "This script should not be run as root" 8 78   
-    exit 1
+    echo "This script should not be run as root."
+    exito 1
 fi
 
 set -e  # Exit immediately if any command exits with a non-zero status
@@ -24,14 +29,30 @@ terminate_sudo() {
     fi
 }
 
+
 keep_sudo_alive
 
+
+# Change directory to home
 cd ~
 
-if whiptail --title "Start" --yesno "Welcome To Devlix WM!\nDo you want to start the Devlix WM Installation?" 8 78; then
-    :  # No operation, just continue
+# Hello !
+
+cat ~/devlix/installation_script/art/hello.txt
+
+read -p "Start Devlix Installation (Y/n): " confirm
+confirm="${confirm:-y}"  # Set default to 'y' if the user presses Enter without input
+
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    echo -e "\n\n---------------------------------------------"
+    echo "Starting Devlix Installation..."
+    echo -e "---------------------------------------------\n\n"
+    sleep 2
+    # Add installation commands here
 else
-    exit 0
+    echo ""
+    echo "Installation canceled."
+    exito 0
 fi
 
 
@@ -83,7 +104,7 @@ echo -e "---------------------------------------------\n\n"
 sleep 2
 
 sudo rm -rf ~/yay
-git clone https://aur.archlinux.org/yay.git ~/yay || { echo "Error: Failed to clone yay repository."; exit 1; }
+git clone https://aur.archlinux.org/yay.git ~/yay || { echo "Error: Failed to clone yay repository."; exito 1; }
 (cd ~/yay && makepkg -sif --noconfirm)
 sudo rm -rf ~/yay
 echo -e "\n\n---------------------------------------------"
@@ -139,18 +160,65 @@ sleep 2
 
 #----------------------------------------------------
 
-walpaper=$(whiptail --title "Wallpaper" --radiolist \
-"Choose a wallpaper to set\n\nThese are some pre-installed wallpapers included in our repository.\nYou can change the wallpaper later." 15 78 5 \
-"wall1.jpg" "Camping in mountains" OFF \
-"wall2.png" "Mountain in front of a lake" OFF \
-"wall3.png" "Snow mountain with pink clouds" OFF \
-"wall4.png" "Mountain with the Milky Way" OFF \
-"wall5.jpg" "House on a small island at night" ON \
---nocancel \
-3>&1 1>&2 2>&3)
+echo -e "\n\n---------------------------------------------"
+echo "Setting the wallpaper and color scheme ..."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
-wal -i "/home/$(whoami)/devlix/wallpapers/$walpaper"
-~/devlix/alacritty-color-export/script.sh
+# Valid image extensions supported by pywal
+valid_extensions=("jpg" "jpeg" "png" "bmp" "gif" "tiff")
+
+# Function to check if the input has a valid image extension
+is_valid_image() {
+    local file="$1"
+    local ext="${file##*.}"
+    for valid_ext in "${valid_extensions[@]}"; do
+        if [[ "$ext" == "$valid_ext" ]]; then
+            return 0  # Valid image extension
+        fi
+    done
+    return 1  # Invalid image extension
+}
+
+# Loop until a valid wallpaper path is entered
+while true; do
+    echo -e "\nEnter the path of the wallpaper you want to set:"
+    read wall_path
+    
+    # Trim leading/trailing spaces from input
+    wall_path=$(echo "$wall_path" | xargs)
+    
+    # Check if the input is empty or only spaces
+    if [[ -z "$wall_path" ]]; then
+        echo "Path cannot be empty or just spaces. Please try again."
+        continue
+    fi
+    
+    # Expand the tilde (~) to the home directory
+    wall_path_expanded="${wall_path/#\~/$HOME}"
+    
+    # Check if the directory exists
+    if [[ ! -e "$wall_path_expanded" ]]; then
+        echo "The file or directory does not exist. Please enter a valid path."
+        continue
+    fi
+    
+    # Check if the file has a valid image extension
+    if ! is_valid_image "$wall_path_expanded"; then
+        echo "The file is not a valid image. Please enter a file with a valid image extension (jpg, png, etc.)."
+        continue
+    fi
+    
+    # If all checks pass, break the loop and apply the wallpaper
+    wal -i "$wall_path_expanded"
+    ~/devlix/alacritty-color-export/script.sh
+    break
+done
+
+echo -e "\n\n---------------------------------------------"
+echo "Done."
+echo -e "---------------------------------------------\n\n"
+sleep 2
 
 #----------------------------------------------------
 
@@ -213,9 +281,9 @@ echo -e "---------------------------------------------\n\n"
 sleep 2
 
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions || { echo "Error: Failed to clone zsh-autosuggestions repository."; exit 1; }
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting || { echo "Error: Failed to clone zsh-syntax-highlighting repository."; exit 1; }
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k || { echo "Error: Failed to clone powerlevel10k repository."; exit 1; }
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions || { echo "Error: Failed to clone zsh-autosuggestions repository."; exito 1; }
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting || { echo "Error: Failed to clone zsh-syntax-highlighting repository."; exito 1; }
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k || { echo "Error: Failed to clone powerlevel10k repository."; exito 1; }
 
 echo -e "\n\n---------------------------------------------"
 echo "Done."
@@ -244,14 +312,22 @@ sleep 2
 
 #----------------------------------------------------
 
+cat ~/devlix/installation_script/art/finish.txt
+sleep 2
+
+#----------------------------------------------------
+
 terminate_sudo
 
-if whiptail --title "Finished !" --yesno \
-"Thanks for installing Devlix WM!\nFor more information about Devlix WM, please visit:\nhttps://devlix.org\nor if you want to read the Devlix documentation and guide, visit:\nhttps://wiki.devlix.org\n\nDo you want to kill all background processes and log out to see changes?" \
-15 78
-then
+# Prompt user to kill all background processes and log out
+read -p "Do you want to kill all background processes and log out? (Y/n): " confirm
+confirm="${confirm:-y}"  # Set default to 'y' if the user presses Enter without input
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
     kill %1
     pkill -KILL -u $USER
 else
-    whiptail --title "Finished !" --msgbox "Logout and login back to see changes" 8 78
+    echo "Logout and login back to see changes"
+    sleep 1
+    echo "Background processes not killed. Exiting script."
+    exito 0
 fi
