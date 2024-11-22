@@ -1,25 +1,14 @@
 #!/bin/bash
 
-# Function to check the operating system
-check_os() {
-    if ! grep -q "^ID=arch$" /etc/os-release; then
-        echo "Error: This script is designed for Arch Linux only. Other distributions, including Manjaro or EndeavourOS, are not supported."
-        exit 1
-    fi
-}
-
-# Call the OS check function
-check_os
-
 usage() {
     echo "Usage: $(basename "$0") [OPTIONS]"
     echo ""
     echo "Options:"
     echo "  --mode=tui          Run the installation in TUI (Text User Interface) mode."
     echo "  --mode=cli          Run the installation in CLI (Command Line Interface) mode."
-    echo "  -y                  Skip confirmation prompts during installation."
-    echo "  -h, --help          Display this help message and exit."
-    echo "  --version           Display version information and exit."
+    echo "  -u, --usage         Display this help message and exit."
+    echo "  -y                  Automatically confirm and run the installation without further prompts."
+    echo "  -v, --version       Display version information and exit."
     echo ""
     echo "Description:"
     echo "  Devlix is a window manager based on dwm 6.5, designed to provide a lightweight, efficient,"
@@ -28,23 +17,57 @@ usage() {
     echo "  productivity with minimal system resource usage."
 }
 
-
+# Display version information
 version() {
-    echo "Devlix WM Installer Script"
+    echo "Devlix Installer Script"
     echo "Version: 1.0.0"
     echo "Based on dwm 6.5"
 }
 
-mode="tui"
+system_info() {
+    echo "=== System Information ==="
+
+    # CPU info
+    echo "CPU: $(lscpu | grep 'Model name' | sed 's/Model name:\s*//')"
+
+    # RAM info
+    echo "RAM: $(free -h | grep 'Mem' | awk '{print $2}')"
+
+    # GPU info
+    echo "GPU: $(lspci | grep -i 'vga' | awk -F ': ' '{print $2}')"
+
+    # Kernel version
+    echo "Kernel version: $(uname -r)"
+
+    # Linux distro
+    echo "Linux distro: $(cat /etc/os-release | grep '^NAME' | sed 's/NAME=//g' | tr -d '"')"
+
+    # Uptime
+    echo "Uptime: $(uptime -p)"
+
+    # Architecture
+    echo "Architecture: $(uname -m)"
+
+    # System load (1, 5, and 15 minute load averages)
+    echo "System Load: $(uptime | awk -F'load average:' '{ print $2 }' | cut -d ',' -f1)"
+
+    # Disk space usage
+    echo "Disk Space: $(df -h | grep -E '^/dev' | awk '{print $1 ": " $5 " used, " $2 " available"}')"
+
+    # Temperature (if supported)
+    echo "Sensors: $(sensors)"
+
+    echo "=== End of System Information ==="
+}
+
+# Default mode
+mode=""
+auto_confirm=false
+
+# Flag to track if a mode is already set
 mode_set=false
-yes_flag=false  # Default to no for -y flag
 
-if [ $# -eq 0 ]; then
-    usage
-    exit 0
-fi
-
-# Process arguments
+# Loop through the arguments
 for arg in "$@"; do
     case $arg in
         --mode=tui)
@@ -63,45 +86,49 @@ for arg in "$@"; do
             mode="cli"
             mode_set=true
             ;;
-        -h|--help)
+        -u|--usage)
             usage
-            exit 0
-            ;;
-        --version)
-            version
             exit 0
             ;;
         -y)
-            yes_flag=true
+            auto_confirm=true
+            ;;
+        -v|--version)
+            version
+            exit 0
             ;;
         *)
-            echo -e "Unknown argument: $arg\n"
-            usage
+            echo "Unknown argument: $arg"
             exit 1
             ;;
     esac
 done
 
-# Remove old log file
+
+# Remove the log file if it exists
 rm -f ~/devlix/installation_script/install.log
 
+# Log commit hash and system info
 echo "Commit Hash: $(git log -1 --format=%H)" >> ~/devlix/installation_script/install.log
 date >> ~/devlix/installation_script/install.log
-uname -a >> ~/devlix/installation_script/install.log
+echo -e "\n\n" >> ~/devlix/installation_script/install.log
+system_info >> ~/devlix/installation_script/install.log
 echo -e "\n\n" >> ~/devlix/installation_script/install.log
 echo "=== Installation ===" >> ~/devlix/installation_script/install.log
 
-# Run the correct installation based on the mode and -y flag
-if [ "$mode" == "tui" ]; then
-    if $yes_flag; then
+# Run the correct installation based on mode
+if $auto_confirm; then
+    # Run the installation scripts with -y flag if auto-confirm is enabled
+    if [ "$mode" == "tui" ]; then
         ~/devlix/installation_script/tui_install.sh -y | tee -a ~/devlix/installation_script/install.log
-    else
-        ~/devlix/installation_script/tui_install.sh | tee -a ~/devlix/installation_script/install.log
-    fi
-elif [ "$mode" == "cli" ]; then
-    if $yes_flag; then
+    elif [ "$mode" == "cli" ]; then
         ~/devlix/installation_script/cli_install.sh -y | tee -a ~/devlix/installation_script/install.log
-    else
+    fi
+else
+    # Otherwise, run the installation scripts normally
+    if [ "$mode" == "tui" ]; then
+        ~/devlix/installation_script/tui_install.sh | tee -a ~/devlix/installation_script/install.log
+    elif [ "$mode" == "cli" ]; then
         ~/devlix/installation_script/cli_install.sh | tee -a ~/devlix/installation_script/install.log
     fi
 fi
