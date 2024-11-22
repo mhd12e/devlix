@@ -40,20 +40,27 @@ cd ~
 
 cat ~/devlix/installation_script/art/hello.txt
 
-read -p "Start Devlix Installation (Y/n): " confirm
-confirm="${confirm:-y}"  # Set default to 'y' if the user presses Enter without input
+#!/bin/bash
+
+# Check if -y is passed as an argument
+if [[ "$1" == "-y" ]]; then
+    confirm="y"
+else
+    read -p "Start Devlix Installation (Y/n): " confirm
+    confirm="${confirm:-y}"  # Set default to 'y' if the user presses Enter without input
+fi
 
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo -e "\n\n---------------------------------------------"
     echo "Starting Devlix Installation..."
     echo -e "---------------------------------------------\n\n"
     sleep 2
-    # Add installation commands here
 else
     echo ""
     echo "Installation canceled."
-    exito 0
+    exit 0
 fi
+
 
 
 # Clean package manager cache for pacman and yay
@@ -97,20 +104,21 @@ echo -e "---------------------------------------------\n\n"
 sleep 2
 
 # Remove and rebuild yay from AUR
+if ! command -v yay &> /dev/null; then
+    echo -e "\n\n---------------------------------------------"
+    echo "Installing yay for the AUR ..."
+    echo -e "---------------------------------------------\n\n"
+    sleep 2
 
-echo -e "\n\n---------------------------------------------"
-echo "Installing yay for the AUR ..."
-echo -e "---------------------------------------------\n\n"
-sleep 2
-
-sudo rm -rf ~/yay
-git clone https://aur.archlinux.org/yay.git ~/yay || { echo "Error: Failed to clone yay repository."; exito 1; }
-(cd ~/yay && makepkg -sif --noconfirm)
-sudo rm -rf ~/yay
-echo -e "\n\n---------------------------------------------"
-echo "Done."
-echo -e "---------------------------------------------\n\n"
-sleep 2
+    sudo rm -rf ~/yay
+    git clone https://aur.archlinux.org/yay.git ~/yay || { echo "Error: Failed to clone yay repository."; exito 1; }
+    (cd ~/yay && makepkg -sif --noconfirm)
+    sudo rm -rf ~/yay
+    echo -e "\n\n---------------------------------------------"
+    echo "Done."
+    echo -e "---------------------------------------------\n\n"
+    sleep 2
+fi
 
 # Install additional packages via yay
 

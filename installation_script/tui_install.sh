@@ -33,10 +33,14 @@ keep_sudo_alive
 
 cd ~
 
-if whiptail --title "Start" --yesno "Welcome To Devlix WM!\nDo you want to start the Devlix WM Installation?" 8 78; then
-    :  # No operation, just continue
-else
-    exito 0
+yes_flag=false
+if [[ "$1" == "-y" ]]; then
+    yes_flag=true
+fi
+
+# Prompt for confirmation unless -y is passed
+if ! $yes_flag && ! whiptail --title "Start" --yesno "Welcome To Devlix WM!\nDo you want to start the Devlix WM Installation?" 8 78; then
+    exit 0
 fi
 
 
@@ -80,21 +84,23 @@ echo "Done."
 echo -e "---------------------------------------------\n\n"
 sleep 2
 
-# Remove and rebuild yay from AUR
+if ! command -v yay &> /dev/null; then
+    # Remove and rebuild yay from AUR
 
-echo -e "\n\n---------------------------------------------"
-echo "Installing yay for the AUR ..."
-echo -e "---------------------------------------------\n\n"
-sleep 2
+    echo -e "\n\n---------------------------------------------"
+    echo "Installing yay for the AUR ..."
+    echo -e "---------------------------------------------\n\n"
+    sleep 2
 
-sudo rm -rf ~/yay
-git clone https://aur.archlinux.org/yay.git ~/yay || { echo "Error: Failed to clone yay repository."; exito 1; }
-(cd ~/yay && makepkg -sif --noconfirm)
-sudo rm -rf ~/yay
-echo -e "\n\n---------------------------------------------"
-echo "Done."
-echo -e "---------------------------------------------\n\n"
-sleep 2
+    sudo rm -rf ~/yay
+    git clone https://aur.archlinux.org/yay.git ~/yay || { echo "Error: Failed to clone yay repository."; exito 1; }
+    (cd ~/yay && makepkg -sif --noconfirm)
+    sudo rm -rf ~/yay
+    echo -e "\n\n---------------------------------------------"
+    echo "Done."
+    echo -e "---------------------------------------------\n\n"
+    sleep 2
+fi
 
 # Install additional packages via yay
 
