@@ -111,7 +111,7 @@ rm -f ~/devlix/installation_script/install.log
 # Log commit hash and system info
 echo "Commit Hash: $(git log -1 --format=%H)" >> ~/devlix/installation_script/install.log
 date >> ~/devlix/installation_script/install.log
-echo -e "\n\n" >> ~/devlix/installation_script/install.log
+echo "" >> ~/devlix/installation_script/install.log
 system_info >> ~/devlix/installation_script/install.log
 echo -e "\n\n" >> ~/devlix/installation_script/install.log
 echo "=== Installation ===" >> ~/devlix/installation_script/install.log
