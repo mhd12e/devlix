@@ -58,7 +58,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
 else
     echo ""
     echo "Installation canceled."
-    exit 0
+    exito 0
 fi
 
 

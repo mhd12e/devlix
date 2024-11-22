@@ -40,7 +40,7 @@ fi
 
 # Prompt for confirmation unless -y is passed
 if ! $yes_flag && ! whiptail --title "Start" --yesno "Welcome To Devlix WM!\nDo you want to start the Devlix WM Installation?" 8 78; then
-    exit 0
+    exito 0
 fi
 
 
