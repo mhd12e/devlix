@@ -17,6 +17,7 @@ usage() {
     echo "Options:"
     echo "  --mode=tui          Run the installation in TUI (Text User Interface) mode."
     echo "  --mode=cli          Run the installation in CLI (Command Line Interface) mode."
+    echo "  -y                  Skip confirmation prompts during installation."
     echo "  -h, --help          Display this help message and exit."
     echo "  --version           Display version information and exit."
     echo ""
@@ -27,6 +28,7 @@ usage() {
     echo "  productivity with minimal system resource usage."
 }
 
+
 version() {
     echo "Devlix WM Installer Script"
     echo "Version: 1.0.0"
@@ -35,12 +37,14 @@ version() {
 
 mode="tui"
 mode_set=false
+yes_flag=false  # Default to no for -y flag
 
 if [ $# -eq 0 ]; then
     usage
     exit 0
 fi
 
+# Process arguments
 for arg in "$@"; do
     case $arg in
         --mode=tui)
@@ -67,6 +71,9 @@ for arg in "$@"; do
             version
             exit 0
             ;;
+        -y)
+            yes_flag=true
+            ;;
         *)
             echo -e "Unknown argument: $arg\n"
             usage
@@ -75,6 +82,7 @@ for arg in "$@"; do
     esac
 done
 
+# Remove old log file
 rm -f ~/devlix/installation_script/install.log
 
 echo "Commit Hash: $(git log -1 --format=%H)" >> ~/devlix/installation_script/install.log
@@ -82,14 +90,6 @@ date >> ~/devlix/installation_script/install.log
 uname -a >> ~/devlix/installation_script/install.log
 echo -e "\n\n" >> ~/devlix/installation_script/install.log
 echo "=== Installation ===" >> ~/devlix/installation_script/install.log
-
-#!/bin/bash
-
-# Check if -y is passed to skip confirmation
-yes_flag=false
-if [[ "$1" == "-y" ]]; then
-    yes_flag=true
-fi
 
 # Run the correct installation based on the mode and -y flag
 if [ "$mode" == "tui" ]; then
@@ -105,7 +105,6 @@ elif [ "$mode" == "cli" ]; then
         ~/devlix/installation_script/cli_install.sh | tee -a ~/devlix/installation_script/install.log
     fi
 fi
-
 
 echo -e "\n\n" >> ~/devlix/installation_script/install.log
 echo "=== End of Installation ===" >> ~/devlix/installation_script/install.log
