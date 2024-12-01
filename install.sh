@@ -1,5 +1,7 @@
 #!/bin/bash
 
+version=$(cd ~/devlix && printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+
 usage() {
     echo "Usage: $(basename "$0") [OPTIONS]"
     echo ""
@@ -20,8 +22,7 @@ usage() {
 # Display version information
 version() {
     echo "Devlix Installer Script"
-    echo "Version: 1.0.0"
-    echo "Based on dwm 6.5"
+    echo "Version: $version"
 }
 
 system_info() {
@@ -61,7 +62,7 @@ system_info() {
 }
 
 # Default mode
-mode=""
+mode="tui"
 auto_confirm=false
 
 # Flag to track if a mode is already set
@@ -109,7 +110,7 @@ done
 rm -f ~/devlix/installation_script/install.log
 
 # Log commit hash and system info
-echo "Commit Hash: $(git log -1 --format=%H)" >> ~/devlix/installation_script/install.log
+echo "Version: $version" >> ~/devlix/installation_script/install.log
 date >> ~/devlix/installation_script/install.log
 echo "" >> ~/devlix/installation_script/install.log
 system_info >> ~/devlix/installation_script/install.log
