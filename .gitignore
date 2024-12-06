@@ -29,3 +29,39 @@ blocks.h
 # Ignore patches and merge conflict files
 *.orig
 *.rej
+
+# Ignore VSCode configuration folder
+.vscode/
+
+# Ignore Vim temporary files
+*.vimrc
+
+# Ignore Vim swap files
+*.swp
+*.swo
+
+# Ignore Nvim swap files
+*.nvim.swp
+*.nvim.swo
+
+# Ignore other temporary files
+*.bak
+*.tmp
+
+# Ignore node_modules (for JS projects)
+node_modules/
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore Thumbs.db (Windows file)
+Thumbs.db
+
+# Ignore IDE-specific files (like JetBrains)
+.idea/
+
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore log files and other unnecessary system files
+*.log
