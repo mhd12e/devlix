@@ -65,3 +65,4 @@ __pycache__/
 
 # Ignore log files and other unnecessary system files
 *.log
+
