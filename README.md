@@ -44,3 +44,5 @@ For any additional questions or suggestions, refer to the community section on o
 ---
 
 For detailed installation steps, configurations, and key bindings, please refer to the [Wiki](https://wiki.devlix.org).
+
+## Note: Installing Devlix WM in an environment that already includes a desktop environment (e.g., Plasma, Hyprland) may override the default appearance and functionality of the existing desktop environment. This could lead to improper operation or compatibility issues.
