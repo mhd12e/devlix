@@ -18,7 +18,7 @@ static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
-static const char *scrot[] = { "scrot","/home/mohamed/Pictures/scrot/%Y-%m-%d-%T-screenshot.png" , NULL} ;
+static const char *screenshot[] = { "flameshot","gui" , NULL} ;
 
 static const char *brightness_up[]  =   { "python3", "/home/mohamed/devlix/scripts/brightness.py" , "up", NULL };
 static const char *brightness_down[]  = { "python3", "/home/mohamed/devlix/scripts/brightness.py" , "down", NULL };
@@ -82,7 +82,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_s,      spawn,          {.v = scrot } } ,
+	{ MODKEY,                       XK_s,      spawn,          {.v = screenshot } } ,
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -129,6 +129,7 @@ static const Key keys[] = {
   { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightness_down } },
   { 0,                            XF86XK_PowerOff,          spawn, {.v = power_menu} },
   { 0,                            XK_Pause,                 spawn, {.v = power_menu} },
+	{ 0,                            XK_Print,                 spawn, {.v = screenshot} },
 };
 
 /* button definitions */
