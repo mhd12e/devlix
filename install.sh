@@ -1,5 +1,81 @@
 #!/bin/bash
 
+if ! grep -q "Arch" /etc/os-release; then
+  echo "Error: This script requires Arch Linux."
+  exit 1
+fi
+
+login_managers=(
+    "gdm"         # GNOME Display Manager
+    "sddm"        # Simple Desktop Display Manager (for KDE)
+    "lightdm"     # Lightweight Display Manager
+    "xdm"         # X Display Manager
+    "lxdm"        # LXDE Display Manager
+    "slim"        # Simple Login Manager
+    "mdm"         # Mint Display Manager
+    "entranced"   # Enlightenment Display Manager
+    "kdm"         # KDE Display Manager (old)
+    "wxdm"        # Lightweight XDM replacement
+    "nodm"        # Minimal auto-login display manager
+    "cdm"         # Console Display Manager
+    "ly"          # TUI (terminal-based) Display Manager
+    "consolekit"  # Console-based session manager
+    "xlogin"      # Basic X login manager
+    "greetd"      # Minimal Wayland/X11 greeter
+    "gdm3"        # GNOME Display Manager (modern)
+    "photon-gdm"  # Photon GNOME Display Manager fork
+    "lightdm-gtk-greeter" # GTK greeter for LightDM
+    "lightdm-webkit-greeter" # Webkit-based greeter for LightDM
+)
+
+# Check for any installed login/display manager
+for dm in "${login_managers[@]}"; do
+    if command -v "$dm" &> /dev/null; then
+        echo "Error: $dm is installed. This installer dosent support installing along side a login/display manager yet."
+        exit 1
+    fi
+done
+
+de_wm_list=(
+    "gnome" "kde" "xfce4" "lxde" "lxqt" "cinnamon" "mate" "budgie" "deepin"
+    "pantheon" "unity" "trinity" "cosmic" "sway" "hyprland" "wayfire"
+    "dwm" "bspwm" "i3" "xmonad" "awesome" "herbstluftwm" "qtile" "spectrwm"
+    "openbox" "fluxbox" "icewm" "jwm" "matchbox" "wmii" "blackbox" "fvwm"
+    "ratpoison" "stumpwm" "notion" "pekwm" "cwm" "sawfish" "2bwm" "metacity"
+    "compiz" "plasma-wm" "afterstep" "amethyst-linux" "dusk" "enlightenment"
+    "river" "way-cooler" "labwc" "orbital" "velox" "hikari" "phoc"
+    "mir-kiosk" "lavalauncher" "wio" "greenfield" "wayland-vnc"
+    "echinus" "frankenwm" "berry" "yabai" "lazywm" "featherwm" "rooftopwm"
+    "maximizedwm" "microwm" "tinywm-lite" "shimmerwm" "proto-wm" "omega-wm"
+    "rockstarwm" "chaoswm" "dreamwm" "larswm" "nano-wm" "plwm" "golemwm"
+    "dirtwm" "vwm" "grwm" "venomwm" "metalwm" "galaxywm" "amethyst-dev"
+    "orbital-lite" "nebula-wm" "hivewm" "carpwm" "kaffee-wm" "pluto-wm"
+    "9wm" "twm" "vtwm" "ctwm" "olvwm" "gemwm" "desqview" "uwin" "aewm"
+    "evilwm" "windowlab" "moxwm" "rosawm" "sun-wm" "wilywm" "zappwm"
+    "icewm-classic" "piewm" "fvwm-1" "aerosmith-wm" "super-wm"
+    "tinywm" "awesome-lite" "matchbox-lite" "openmoko-wm" "xfce-lite"
+    "sway-micro" "micro-wm" "smolwm" "wayland-micro"
+    "dwm-patched" "dwm-rice" "hyprland-dev" "river-experimental"
+    "wayfire-git" "cosmic-dev" "labwc-next" "moonlight-wm" "nebula-next"
+    "qtile-rice" "awesome-modern" "i3-gaps" "i3-next" "bspwm-fork" "openbox-ng"
+    "xlightwm" "gala" "dreamshell" "lotuswm" "echo-wm" "inter-wm" "zenith-wm"
+    "vectorwm" "supernova-wm" "terra-wm" "galacticwm" "starrywm" "chaos-rice"
+    "lumina" "mint-wm" "calypso-wm" "altwm" "kodi-wm" "dreamboxwm"
+    "archangel-wm" "pinnacle-wm" "hikari-next"
+    "starlight-wm" "infinity-wm" "driftwm" "velvetwm" "void-wm" "trinity-next"
+    "freebirdwm" "alpha-wm" "betawave-wm" "gamma-wm" "zeta-wm" "river-rc"
+    "aurorawm" "plasma-lite" "vulcanwm" "stratos-wm" "hyperlight-wm"
+    "bliss-wm" "pico-wm" "archwm" "silverwolf-wm" "nextgen-wm" "euphoria-wm"
+)
+
+# Check for installed DEs/WMs
+for de_wm in "${de_wm_list[@]}"; do
+    if command -v "$de_wm" &> /dev/null; then
+        echo "Error: $de_wm is installed. This installer dosen't support installing along side it yet."
+        exit 1
+    fi
+done
+
 version=$(cd ~/devlix && printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 
 usage() {
