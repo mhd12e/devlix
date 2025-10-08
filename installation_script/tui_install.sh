@@ -77,7 +77,7 @@ echo "Updating system and installing packages ..."
 echo -e "---------------------------------------------\n\n"
 sleep 2
 
-sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal neofetch lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager curl wget flameshot bluez-obex bluez bluez-utils blueman pavucontrol arandr upower
+sudo pacman -Syu --noconfirm alacritty xorg-server xorg-xinit xorg-xsetroot xorg-xrandr feh picom python-pywal lf ueberzug ffmpegthumbnailer imagemagick poppler base-devel git bat chafa unzip p7zip unrar catdoc docx2txt odt2txt gnumeric zsh go webkit2gtk libxft libxinerama libx11 ttf-jetbrains-mono-nerd alsa-utils scrot python3 networkmanager curl wget flameshot bluez-obex bluez bluez-utils blueman pavucontrol arandr upower
 
 echo -e "\n\n---------------------------------------------"
 echo "Done."
@@ -109,7 +109,7 @@ echo "Installing additional packages via yay ..."
 echo -e "---------------------------------------------\n\n"
 sleep 2
 
-yay -Syu --noconfirm epub-thumbnailer-git wkhtmltopdf-static 7-zip
+yay -Syu --noconfirm epub-thumbnailer-git wkhtmltopdf-static 7-zip neofetch
 
 echo -e "\n\n---------------------------------------------"
 echo "Done."
